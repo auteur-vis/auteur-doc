@@ -12,7 +12,7 @@ import Gettingstarted from "./gettingstarted";
 export default function Home() {
 
   const optionsMap = {
-    "Getting Started":["Installation"],
+    "Getting Started":["Installation", "Tutorial"],
     "Documentation":["Generation Criteria", "*Compound Criteria", "*Customization", "*Stats", "Augmentations", "Draft"],
     "Gallery":["Emphasis", "Threshold", "Range", "Derived Values", "Local Data", "Regression"]};
 
