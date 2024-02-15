@@ -116,7 +116,7 @@ function ResponsiveAppBar({selected="Getting Started", setSelection}) {
                 onClick={() => handleCloseNavMenu(page)}
                 sx={{ my: 2, color: 'hsl(210,8%,50%)', display: 'block', textTransform: 'none', padding:'0px 10px' }}
               >
-                {(page == selected) ? (<span style={{ fontWeight:"700", color: 'hsl(210,8%,25%)' }}><a href={`/auteur-doc/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a></span>) : <a href={`/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a>}
+                {(page == selected) ? (<span style={{ fontWeight:"700", color: 'hsl(210,8%,25%)' }}><a href={`/auteur-doc/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a></span>) : <a href={`/auteur-doc/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a>}
               </Button>
             ))}
           </Box>
