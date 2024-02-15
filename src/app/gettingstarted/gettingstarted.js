@@ -58,7 +58,7 @@ export default function Gettingstarted() {
       <div className={styles.section}>
         <h1 className={styles.sectionHeader} id="Tutorial">Tutorial</h1>
         <p className={styles.sectionContent}>
-        <video controls src={"/video.mp4"} width="100%" height="auto" type='video/mp4'></video>
+        <video controls src={"/auteur-doc/video.mp4"} width="100%" height="auto" type='video/mp4'></video>
         </p>
       </div>
 
