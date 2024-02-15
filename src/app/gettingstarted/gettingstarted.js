@@ -52,7 +52,7 @@ export default function Gettingstarted() {
             {`import { Draft, Threshold } from "auteur"`}
         </pre>
 
-        <p className={styles.sectionContent}>For all available components, <a className={styles.link} href="/documentation">read our documentation here</a>. To see them in use, <a className={styles.link} href="/documentation">check out our gallery</a>.</p>
+        <p className={styles.sectionContent}>For all available components, <a className={styles.link} href="/auteur-doc/documentation">read our documentation here</a>. To see them in use, <a className={styles.link} href="/auteur-doc/gallery">check out our gallery</a>.</p>
       </div>
 
       {/*<div className={styles.section}>
