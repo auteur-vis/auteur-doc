@@ -41,7 +41,7 @@ function ResponsiveAppBar({selected="Getting Started", setSelection}) {
             variant="h6"
             noWrap
             component="a"
-            href="/gettingstarted"
+            href="/auteur-doc/gettingstarted"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -86,8 +86,8 @@ function ResponsiveAppBar({selected="Getting Started", setSelection}) {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
                   {(page == selected)
-                    ? (<Typography textAlign="center" style={{ fontWeight:"700", color: 'hsl(210,8%,25%)' }}><a href={`/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a></Typography>)
-                    : (<Typography textAlign="center" style={{ color: 'hsl(210,8%,50%)' }}><a href={`/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a></Typography>)}
+                    ? (<Typography textAlign="center" style={{ fontWeight:"700", color: 'hsl(210,8%,25%)' }}><a href={`/auteur-doc/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a></Typography>)
+                    : (<Typography textAlign="center" style={{ color: 'hsl(210,8%,50%)' }}><a href={`/auteur-doc/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a></Typography>)}
                 </MenuItem>
               ))}
             </Menu>
@@ -96,7 +96,7 @@ function ResponsiveAppBar({selected="Getting Started", setSelection}) {
             variant="h5"
             noWrap
             component="a"
-            href="/gettingstarted"
+            href="/auteur-doc/gettingstarted"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -116,7 +116,7 @@ function ResponsiveAppBar({selected="Getting Started", setSelection}) {
                 onClick={() => handleCloseNavMenu(page)}
                 sx={{ my: 2, color: 'hsl(210,8%,50%)', display: 'block', textTransform: 'none', padding:'0px 10px' }}
               >
-                {(page == selected) ? (<span style={{ fontWeight:"700", color: 'hsl(210,8%,25%)' }}><a href={`/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a></span>) : <a href={`/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a>}
+                {(page == selected) ? (<span style={{ fontWeight:"700", color: 'hsl(210,8%,25%)' }}><a href={`/auteur-doc/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a></span>) : <a href={`/${page.replace(/\s/g, '').toLowerCase()}`}>{page}</a>}
               </Button>
             ))}
           </Box>
