@@ -1,0 +1,15 @@
+export const markdown_short = `const draft = useRef(new Draft());
+
+const [maxThreshold, setMaxThreshold] = React.useState(8.5);
+const [minThreshold, setMinThreshold] = React.useState(8);
+const newRange = useRef(new Range("Flavor", [minThreshold, maxThreshold], "closed", style));
+
+let newAugs = newRange.current.getAugs();
+
+draft.current.chart(ref.current)
+            .selection(bars)
+            .x("FIELD1", xScale)
+            .y("Flavor", yScale)
+            .exclude({"name":["label", "regression", "text"]})
+            .augment(newAugs);
+`
