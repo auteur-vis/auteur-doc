@@ -37,10 +37,9 @@
 //     </main>
 //   );
 // }
-
-
-'use server'
  
 import { redirect } from 'next/navigation';
- 
-redirect(`./gettingstarted`);
+
+export default async function Home() {
+    redirect('/auteur-doc/gettingstarted');
+}
