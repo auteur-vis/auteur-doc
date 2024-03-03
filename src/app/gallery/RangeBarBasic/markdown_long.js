@@ -34,7 +34,7 @@ export default function Vis() {
     const [data, setData] = React.useState(flatten);
 
     let layout={"width":500,
-               "height":400,
+               "height":500,
                "marginTop":50,
                "marginRight":50,
                "marginBottom":50,
@@ -112,7 +112,7 @@ export default function Vis() {
 
         const draft = new Draft();
 
-        draft.chart("#svg")
+        draft.chart(ref.current)
             .selection(groups)
             .x("country", xScale)
             .y("count", yScale)

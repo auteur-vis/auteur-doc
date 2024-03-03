@@ -1,4 +1,6 @@
-export const markdown_short = `const [barThreshold, setBarThreshold] = React.useState(150);
+export const markdown_short = `import { Draft, Threshold } from "auteur";
+
+const [barThreshold, setBarThreshold] = React.useState(150);
 const [barOperation, setBarOperation] = useState("leq");
 
 const draft = useRef(new Draft());

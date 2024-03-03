@@ -5,7 +5,7 @@ import { Draft, Threshold } from "auteur";
 
 import climate from "../climate.json";
 
-export default function Vis({size={"width":500, "height":500}, sparse=false}) {
+export default function Vis({size={"width":900, "height":500}, sparse=false}) {
 
 	const [xThreshold, setXThreshold] = React.useState(new Date(2006, 3, 10));
 

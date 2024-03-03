@@ -1,4 +1,6 @@
-export const markdown_short = `const draft = useRef(new Draft());
+export const markdown_short = `import { Draft, Range } from "auteur";
+
+const draft = useRef(new Draft());
 const newRange = useRef(new Range("Flavor", ["Q1", "Q3"], "closed", style));
 
 draft.current.chart(ref.current)

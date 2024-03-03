@@ -7,12 +7,13 @@ import coffee from "../coffee.json";
 
 export default function Vis() {
 
-    const [emphVal, setEmphVal] = React.useState("Other");
-    const [emphVar, setEmphVar] = React.useState("Variety");
     const [emphOptions, setEmphOptions] = React.useState(Array.from(new Set(coffee.map(d => d.Variety))));
 
     const ref = useRef("emphVal");
     const draft = useRef(new Draft());
+
+    const [emphVal, setEmphVal] = React.useState("Other");
+    const [emphVar, setEmphVar] = React.useState("Variety");
     const newEmphasis = useRef(new Emphasis(emphVar, emphVal));
 
     const [data, setData] = React.useState(coffee);
@@ -82,7 +83,7 @@ export default function Vis() {
                     .selection(scatterpoints)
                     .x("Aroma", xScale)
                     .y("Flavor", yScale)
-                    .exclude({"name":["text"]})
+                    .exclude({"name":["label", "regression"]})
                     .augment(newEmphasis.current.getAugs());
 
     }, [data])

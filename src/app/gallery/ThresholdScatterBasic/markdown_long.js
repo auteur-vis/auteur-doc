@@ -3,7 +3,7 @@ import * as d3 from "d3";
 
 import { Draft, Threshold } from "auteur";
 
-import coffee from "../arabica_data_cleaned_top15.json";
+import coffee from "../coffee.json";
 
 export default function Basic() {
 
@@ -77,7 +77,7 @@ export default function Basic() {
 
     const draft = new Draft();
 
-    draft.chart("#svg")
+    draft.chart(ref.current)
       .selection(scatterpoints)
       .x("Aroma", xScale)
       .y("Flavor", yScale)

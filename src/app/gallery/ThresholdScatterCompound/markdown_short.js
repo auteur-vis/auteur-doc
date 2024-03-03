@@ -1,4 +1,6 @@
-export const markdown_short = `onst [xThreshold, setXThreshold] = React.useState(8.3);
+export const markdown_short = `import { Draft, Threshold } from "auteur";
+
+const [xThreshold, setXThreshold] = React.useState(8.3);
 const [yThreshold, setYThreshold] = React.useState(8.55);
 const [mergeBy, setMergeBy] = useState("symmdiff");
 

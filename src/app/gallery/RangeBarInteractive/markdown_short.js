@@ -1,4 +1,6 @@
-export const markdown_short = `const draft = useRef(new Draft());
+export const markdown_short = `import { Draft, Range } from "auteur";
+
+const draft = useRef(new Draft());
 
 const [maxThreshold, setMaxThreshold] = React.useState(8.5);
 const [minThreshold, setMinThreshold] = React.useState(8);

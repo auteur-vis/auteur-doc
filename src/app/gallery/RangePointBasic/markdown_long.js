@@ -57,7 +57,7 @@ export default function Vis() {
                   .join("text")
                   .attr("id", "xTitle")
                   .attr("text-anchor", "middle")
-                  .attr("transform", ${"`"}translate(${"$"}{layout.width/2}, 30)${"`"})
+                  .attr("transform", ${"`"}translate(${"$"}{layout.width/2 + 30}, 30)${"`"})
                   .attr("fill", "black")
                   .text(d => d);
 
@@ -105,7 +105,7 @@ export default function Vis() {
 
         const draft = new Draft();
 
-        draft.chart("#svg")
+        draft.chart(ref.current)
             .selection(groups)
             .x("country", xScale)
             .y("count", yScale)

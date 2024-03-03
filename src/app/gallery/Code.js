@@ -1,7 +1,6 @@
 "use client"; // This is a client component
 
 import React, {useState, useEffect} from 'react';
-import Markdown from 'react-markdown';
 
 import Button from '@mui/material/Button';
 import ExpandLess from '@mui/icons-material/ExpandLess';
@@ -20,7 +19,7 @@ export default function Code({markdown_short="", markdown_long=""}) {
 
   return (
     <div>
-      <Button size="small" onClick={() => handleOpen()} variant="outlined" startIcon={open ? <ExpandLess /> : <ExpandMore />}>
+      <Button style={{"margin":"20px 0 0 0"}} size="small" onClick={() => handleOpen()} variant="outlined" startIcon={open ? <ExpandLess /> : <ExpandMore />}>
         {open ? "collapse code" : "expand code"}
       </Button>
       <pre className={styles.codesegment}>{open ? markdown_long : markdown_short}</pre>

@@ -121,7 +121,7 @@ export default function Vis() {
         draft.chart(ref.current)
             .x("date", xScale)
             .y("AverageTemperature", yScale)
-            .exclude({"name":["fill", "text"]})
+            .exclude({"name":["fill", "text", "regression"]})
             .augment(yThreshold.getAugs());
 
     }, [data])

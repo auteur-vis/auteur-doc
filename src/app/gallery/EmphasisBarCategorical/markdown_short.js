@@ -1,11 +1,16 @@
-export const markdown_short = `const style = {"fill":{"fill":"green"}};
+export const markdown_short = `import { Draft, Emphasis } from "auteur";
 
-newEmphasis.current.updateStyles(style);
+const draft = new Draft();
+const newEmphasis = new Emphasis("Country", ["Colombia", "Ethiopia"]);
 
-draft.current.chart(ref.current)
-            .selection(bars)
-            .x("Country", xScale)
-            .y("count", yScale)
-            .exclude({"name":["stroke", "text", "label", "regression"]})
-            .augment(newEmphasis.current.getAugs());
+const style = {"fill":{"fill":"green"}};
+
+newEmphasis.updateStyles(style);
+
+draft.chart(ref.current)
+    .selection(bars)
+    .x("Country", xScale)
+    .y("count", yScale)
+    .include({"name":["fill", "opacity"]})
+    .augment(newEmphasis.getAugs());
 `

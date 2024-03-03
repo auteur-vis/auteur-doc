@@ -12,11 +12,11 @@ export default function Vis() {
     const ref = useRef("lineless");
 
     const draft = useRef(new Draft());
-    const newXThreshold = useRef(new Threshold("date", xThreshold, "geq"));
+    const newXThreshold = useRef(new Threshold("date", xThreshold, "eq"));
 
     const [data, setData] = React.useState(climate);
 
-    let layout={"width":500,
+    let layout={"width":900,
                "height":500,
                "marginTop":50,
                "marginRight":50,
@@ -109,7 +109,7 @@ export default function Vis() {
                     .selection(lines)
                     .x("date", xScale)
                     .y("AverageTemperature", yScale)
-                    .exclude({"rank":1})
+                    .include({"name":["line"]})
                     .augment(newXThreshold.current.getAugs());
 
     }, [data])

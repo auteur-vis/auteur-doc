@@ -7,9 +7,6 @@ import coffee from "../coffee.json";
 
 export default function Vis() {
 
-    const [emphVal, setEmphVal] = React.useState("median");
-    const [emphVar, setEmphVar] = React.useState("Aroma");
-
     const ref = useRef("emphVal");
 
     const [data, setData] = React.useState(coffee);
@@ -76,20 +73,8 @@ export default function Vis() {
                   .attr("fill", "black")
                   .text(d => d);
 
-        function alignY(d, i) {
-            return yScale(d["Flavor"])
-        }
-
-        function getText(d, i) {
-            return ${"`"}produced in ${"$"}{d.Country}${"`"}
-        }
-
-        const styles = {"text": {"text-anchor":"end", "x": 490, "y":alignY, "text": getText}};
-
         const draft = new Draft();
         const newEmphasis = new Emphasis(emphVar, emphVal);
-
-        newEmphasis.updateStyles(styles);
 
         draft.chart(ref.current)
                     .selection(scatterpoints)

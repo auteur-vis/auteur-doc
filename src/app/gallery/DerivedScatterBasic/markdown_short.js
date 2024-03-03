@@ -1,4 +1,6 @@
-export const markdown_short = `const draft = new Draft();
+export const markdown_short = `import { Draft, DerivedValues } from "auteur";
+
+const draft = new Draft();
 const newDerivedValues = new DerivedValues("Flavor", 0.15, "sub");
 
 function alignX(d, i) {

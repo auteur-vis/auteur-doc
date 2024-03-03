@@ -35,7 +35,7 @@ export default function Vis() {
     const [data, setData] = React.useState(flatten);
 
     let layout={"width":560,
-               "height":400,
+               "height":500,
                "marginTop":50,
                "marginRight":50,
                "marginBottom":50,
@@ -68,7 +68,7 @@ export default function Vis() {
                   .join("text")
                   .attr("id", "xTitle")
                   .attr("text-anchor", "middle")
-                  .attr("transform", ${"`"}translate(${"$"}{layout.width/2}, 30)${"`"})
+                  .attr("transform", ${"`"}translate(${"$"}{layout.width/2 + 30}, 30)${"`"})
                   .attr("fill", "black")
                   .text(d => d);
 
@@ -105,7 +105,7 @@ export default function Vis() {
 
         const draft = new Draft();
 
-        draft.chart("#svg")
+        draft.chart(ref.current)
             .selection(groups)
             .x("country", xScale)
             .y("count", yScale)

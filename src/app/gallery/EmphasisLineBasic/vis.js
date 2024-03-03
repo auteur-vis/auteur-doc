@@ -5,7 +5,7 @@ import { Draft, Emphasis } from "auteur";
 
 import climate from "../climate.json";
 
-export default function Vis({size={"width":500, "height":500}, sparse=false}) {
+export default function Vis({size={"width":900, "height":500}, sparse=false}) {
 
 	const [yValue, setYValue] = React.useState("New York");
 

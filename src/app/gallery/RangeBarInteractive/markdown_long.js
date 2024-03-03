@@ -18,87 +18,81 @@ export default function Vis() {
     const [minThreshold, setMinThreshold] = React.useState(8);
     const newRange = useRef(new Range("Flavor", [minThreshold, maxThreshold], "closed", style));
 
-    let layout={"width":700,
-               "height":500,
-               "marginTop":50,
-               "marginRight":50,
-               "marginBottom":50,
-               "marginLeft":50};
+    let layout={"width":900,
+             "height":500,
+             "marginTop":50,
+             "marginRight":50,
+             "marginBottom":50,
+             "marginLeft":50};
 
-    function updatePlot() {
+    useEffect(() => {
 
         let svgElement = d3.select(ref.current);
 
         svgElement.attr("width", layout.width)
-                .attr("height", layout.height);
+              .attr("height", layout.height);
 
         let xScale = d3.scaleBand()
-                        .domain(data.map(d => d["FIELD1"]))
-                        .range([layout.marginLeft, layout.width - layout.marginRight]);
+                      .domain(data.map(d => d["FIELD1"]))
+                      .range([layout.marginLeft, layout.width - layout.marginRight]);
 
         let yScale = d3.scaleLinear()
-                        .domain([d3.min(data, d => d.Flavor) - 0.5, d3.max(data, d => d["Flavor"])])
-                        .range([layout.height - layout.marginBottom, layout.marginTop]);
+                      .domain([d3.min(data, d => d.Flavor) - 0.5, d3.max(data, d => d["Flavor"])])
+                      .range([layout.height - layout.marginBottom, layout.marginTop]);
 
         let bars = svgElement.select("#mark")
-                            .selectAll(".bar")
-                            .data(data)
-                            .join("rect")
-                            .attr("class", "bar")
-                            .attr("x", d => xScale(d["FIELD1"]) + 1)
-                            .attr("y", d => yScale(d["Flavor"]))
-                            .attr("width", xScale.bandwidth() - 2)
-                            .attr("height", d => layout.height - layout.marginBottom - yScale(d["Flavor"]))
-                            .attr("fill", "steelblue")
-                            .attr("opacity", "0.5");
+                          .selectAll(".bar")
+                          .data(data)
+                          .join("rect")
+                          .attr("class", "bar")
+                          .attr("x", d => xScale(d["FIELD1"]) + 1)
+                          .attr("y", d => yScale(d["Flavor"]))
+                          .attr("width", xScale.bandwidth() - 2)
+                          .attr("height", d => layout.height - layout.marginBottom - yScale(d["Flavor"]))
+                          .attr("fill", "steelblue")
+                          .attr("opacity", "0.5");
 
         svgElement.select("#xAxis")
-                    .call(d3.axisBottom(xScale))
-                    .attr("transform", ${"`"}translate(0, ${"$"}{layout.height - layout.marginBottom})${"`"});
+                  .call(d3.axisBottom(xScale))
+                  .attr("transform", ${"`"}translate(0, ${"$"}{layout.height - layout.marginBottom})${"`"});
 
         svgElement.select("#yAxis")
-                    .call(d3.axisLeft(yScale).ticks(5))
-                    .attr("transform", ${"`"}translate(${"$"}{layout.marginLeft}, 0)${"`"});
+                  .call(d3.axisLeft(yScale).ticks(5))
+                  .attr("transform", ${"`"}translate(${"$"}{layout.marginLeft}, 0)${"`"});
 
         let xAxis = svgElement.select("#xAxis")
-                    .call(d3.axisBottom(xScale))
-                    .attr("transform", ${"`"}translate(0, ${"$"}{layout.height - layout.marginBottom})${"`"});
+                  .call(d3.axisBottom(xScale))
+                  .attr("transform", ${"`"}translate(0, ${"$"}{layout.height - layout.marginBottom})${"`"});
 
         svgElement.select("#xAxis").selectAll("#xTitle")
-                    .data(["FIELD1 (ID)"])
-                    .join("text")
-                    .attr("id", "xTitle")
-                    .attr("text-anchor", "middle")
-                    .attr("transform", ${"`"}translate(${"$"}{layout.width/2}, 30)${"`"})
-                    .attr("fill", "black")
-                    .text(d => d);
+                  .data(["FIELD1 (ID)"])
+                  .join("text")
+                  .attr("id", "xTitle")
+                  .attr("text-anchor", "middle")
+                  .attr("transform", ${"`"}translate(${"$"}{layout.width/2}, 30)${"`"})
+                  .attr("fill", "black")
+                  .text(d => d);
 
         let yAxis = svgElement.select("#yAxis")
-                    .call(d3.axisLeft(yScale).ticks(5))
-                    .attr("transform", ${"`"}translate(${"$"}{layout.marginLeft}, 0)${"`"});
+                  .call(d3.axisLeft(yScale).ticks(5))
+                  .attr("transform", ${"`"}translate(${"$"}{layout.marginLeft}, 0)${"`"});
 
         svgElement.select("#yAxis").selectAll("#yTitle")
-                    .data(["Flavor"])
-                    .join("text")
-                    .attr("id", "yTitle")
-                    .attr("text-anchor", "middle")
-                    .attr("transform", ${"`"}translate(0, 40)${"`"})
-                    .attr("fill", "black")
-                    .text(d => d);
-
-    }
-            
-    useEffect(() => {
-
-        updatePlot()
+                  .data(["Flavor"])
+                  .join("text")
+                  .attr("id", "yTitle")
+                  .attr("text-anchor", "middle")
+                  .attr("transform", ${"`"}translate(0, 40)${"`"})
+                  .attr("fill", "black")
+                  .text(d => d);
         let newAugs = newRange.current.getAugs();
 
         draft.current.chart(ref.current)
-                    .selection(bars)
-                    .x("FIELD1", xScale)
-                    .y("Flavor", yScale)
-                    .exclude({"name":["label", "regression", "text"]})
-                    .augment(newAugs);
+                  .selection(bars)
+                  .x("FIELD1", xScale)
+                  .y("Flavor", yScale)
+                  .exclude({"name":["label", "regression", "text"]})
+                  .augment(newAugs);
 
     }, [data])
 

@@ -90,7 +90,7 @@ export default function Vis() {
                     .selection(scatterpoints)
                     .x("Aroma", xScale)
                     .y("Flavor", yScale)
-                    .exclude({"name":["text"]})
+                    .exclude({"name":["label", "regression"]})
                     .augment(newEmphasis.current.getAugs());
 
     }, [data])

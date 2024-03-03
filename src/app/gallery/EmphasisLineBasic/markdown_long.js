@@ -7,16 +7,11 @@ import climate from "../climate.json";
 
 export default function Vis() {
 
-    const [yValue, setYValue] = React.useState("New York");
-
-    const ref = useRef("lineless");
-
-    const draft = useRef(new Draft());
-    const newYEmphasis = useRef(new Emphasis("City", yValue));
+    const ref = useRef("svg");
 
     const [data, setData] = React.useState(climate.filter(d => d.year > 2005));
 
-    let layout={"width":500,
+    let layout={"width":900,
                "height":500,
                "marginTop":50,
                "marginRight":50,
@@ -99,47 +94,26 @@ export default function Vis() {
                   .attr("text-anchor", "middle")
                   .attr("transform", ${"`"}translate(0, 40)${"`"})
                   .attr("fill", "black")
-                  .text(d => d)
+                  .text(d => d);
+
+        const draft = new Draft();
+        const newYEmphasis = new Emphasis("City", "New York");
 
         const styles = {"stroke": {"stroke": (d, i) => colorScale(d[0].City), "stroke-width": "3px"}};
 
-        newYEmphasis.current.updateStyles(styles);
+        newYEmphasis.updateStyles(styles);
 
-        draft.current.chart(ref.current)
+        draft.chart(ref.current)
                     .selection(lines)
                     .x("date", xScale)
                     .y("AverageTemperature", yScale)
-                    .exclude({"name":["label", "regression", "fill", "opacity", "text"]})
-                    .augment(newYEmphasis.current.getAugs());
+                    .include({"name":["stroke"]})
+                    .augment(newYEmphasis.getAugs());
 
     }, [data])
 
-    useEffect(() => {
-
-        newYEmphasis.current.updateVal(yValue);
-        let newAug2 = newYEmphasis.current.getAugs();
-        
-        draft.current.augment(newAug2);
-
-    }, [yValue])
-
-    function updateY(e) {
-        setYValue(e.target.value);
-    }
-
     return (
         <div>
-            <div>
-                <p>y-axis threshold: </p>
-                <input
-                    type="range"
-                    id="quantity"
-                    name="quantity"
-                    min="-5" max="25"
-                    step="0.01"
-                    value={yValue}
-                    onChange={(e) => updateY(e)} />
-            </div>
             <svg id="less" ref={ref}>
                 <g id="mark" />
                 <g id="xAxis" />

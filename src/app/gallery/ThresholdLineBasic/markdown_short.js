@@ -1,7 +1,9 @@
-export const markdown_short = `const [xThreshold, setXThreshold] = React.useState(new Date(2006, 3, 10));
+export const markdown_short = `import { Draft, Threshold } from "auteur";
+
+const [xThreshold, setXThreshold] = React.useState(new Date(2006, 3, 10));
 
 const draft = useRef(new Draft());
-const newXThreshold = useRef(new Threshold("date", xThreshold, "geq"));
+const newXThreshold = useRef(new Threshold("date", xThreshold, "eq"));
 
 const styles = {"line": {"stroke": (d, i) => "red", "stroke-width": "2px"}};
 
@@ -11,6 +13,6 @@ draft.current.chart(ref.current)
             .selection(lines)
             .x("date", xScale)
             .y("AverageTemperature", yScale)
-            .exclude({"rank":1})
+            .include({"name":["line"]})
             .augment(newXThreshold.current.getAugs());
 `

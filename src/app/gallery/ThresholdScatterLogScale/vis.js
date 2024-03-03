@@ -88,10 +88,11 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 		draft.current.chart(ref.current)
 					.selection(scatterpoints)
 					.x("Flavor", xScale)
-					.y("Aroma", yScale);
+					.y("Aroma", yScale)
+					.exclude({"name":["label", "regression"]});
 		
 		if (sparse) {
-			draft.current.exclude({"name":["label", "regression"]}).augment(newYThreshold.current.getAugs());
+			draft.current.augment(newYThreshold.current.getAugs());
 		} else {
 			draft.current.augment(newYThreshold.current.getAugs());
 		}

@@ -9,12 +9,8 @@ export default function Vis() {
 
     let group = d3.group(coffee, d => d["Country"]);
     let groupedData = [...group.entries()].map(d => { return {"Country":d[0], "entries":d[1], "count":d[1].length} });
-    
-    const [categories, setCategories] = React.useState(["Colombia", "Ethiopia"]);
 
-    const ref = useRef("barrange");
-    const draft = useRef(new Draft());
-    const newEmphasis = useRef(new Emphasis("Country", categories));
+    const ref = useRef("svg");
 
     const [data, setData] = React.useState(groupedData);
 
@@ -76,24 +72,27 @@ export default function Vis() {
                   .attr("text-anchor", "middle")
                   .attr("transform", ${"`"}translate(0, 40)${"`"})
                   .attr("fill", "black")
-                  .text(d => d)
+                  .text(d => d);
+
+        const draft = new Draft();
+        const newEmphasis = new Emphasis("Country", ["Colombia", "Ethiopia"]);
 
         const style = {"fill":{"fill":"green"}};
 
-        newEmphasis.current.updateStyles(style);
+        newEmphasis.updateStyles(style);
 
-        draft.current.chart(ref.current)
-                    .selection(bars)
-                    .x("Country", xScale)
-                    .y("count", yScale)
-                    .exclude({"name":["stroke", "text", "label", "regression"]})
-                    .augment(newEmphasis.current.getAugs());
-
+        draft.chart(ref.current)
+            .selection(bars)
+            .x("Country", xScale)
+            .y("count", yScale)
+            .include({"name":["fill", "opacity"]})
+            .augment(newEmphasis.getAugs());
+            
     }, [data])
 
     return (
         <div>
-            <svg id="barless" ref={ref}>
+            <svg id="svg" ref={ref}>
                 <g id="mark" />
                 <g id="xAxis" />
                 <g id="yAxis" />
@@ -101,5 +100,4 @@ export default function Vis() {
         </div>
     )
 }
-
 `

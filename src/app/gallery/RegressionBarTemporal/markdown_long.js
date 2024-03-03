@@ -73,10 +73,6 @@ export default function Vis() {
                   .attr("fill", "black")
                   .text(d => d)
 
-        const style = {"fill":{"fill":"green"}, "regression":{"transform":${"`"}translate(${"$"}{xScale.bandwidth()/2}, 0)${"`"}}};
-
-        regression.current.updateStyles(style);
-
         draft.current.chart(ref.current)
                     .selection(bars)
                     .x("month", xScale)

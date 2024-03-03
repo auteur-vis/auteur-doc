@@ -1,18 +1,12 @@
-export const markdown_short = `function alignY(d, i) {
-    return yScale(d["Flavor"])
-}
+export const markdown_short = `import { Draft, Emphasis } from "auteur";
 
-function getText(d, i) {
-    return ${"`"}produced in ${"$"}{d.Country}${"`"}
-}
+const draft = new Draft();
+const newEmphasis = new Emphasis("Flavor", "min");
 
-const styles = {"text": {"text-anchor":"end", "x": 490, "y":alignY, "text": getText}};
-
-newEmphasis.current.updateStyles(styles);
-
-draft.current.chart(ref.current)
-            .selection(bars)
-            .x("FIELD1", xScale)
-            .y("Flavor", yScale)
-            .exclude({"name":["line"]})
-            .augment(newEmphasis.current.getAugs());`
+draft.chart(ref.current)
+      .selection(bars)
+      .x("FIELD1", xScale)
+      .y("Flavor", yScale)
+      .exclude({"name":["regression", "label"]})
+      .augment(newEmphasis.getAugs());
+`

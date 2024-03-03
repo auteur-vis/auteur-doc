@@ -1,4 +1,6 @@
-export const markdown_short = `const range = new Range("Flavor", [6.5, 7.5]);
+export const markdown_short = `import { Draft, Range } from "auteur";
+
+const range = new Range("Flavor", [6.5, 7.5]);
 
 let colorScale = d3.scaleSequential(d3.interpolateTurbo)
     .domain(d3.extent(data, d => d["Aroma"]));

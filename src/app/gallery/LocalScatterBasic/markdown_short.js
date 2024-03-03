@@ -1,4 +1,6 @@
-export const markdown_short = `const draft = useRef(new Draft());
+export const markdown_short = `import { Draft, LocalData } from "auteur";
+
+const draft = useRef(new Draft());
 
 const local = useRef(coffee.slice(110, 120));
 const newLocal = useRef(new LocalData(local.current));

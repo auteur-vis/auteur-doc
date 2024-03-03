@@ -1,9 +1,8 @@
-export const markdown_short = `const draft = useRef(new Draft());
+export const markdown_short = `import { Draft, Range } from "auteur";
+
 const newRange = useRef(new Range("date", [minThreshold, maxThreshold], "closed"));
 
-const styles = {"line": {"stroke": (d, i) => "red", "stroke-width": "2px"}};
-
-newRange.current.updateStyles(styles);
+const draft = useRef(new Draft());
 
 draft.current.chart(ref.current)
             .selection(lines)
@@ -11,4 +10,5 @@ draft.current.chart(ref.current)
             .x("date", xScale)
             .y("AverageTemperature", yScale)
             .exclude({"name": ["text", "opacity"]})
-            .augment(newRange.current.getAugs());`
+            .augment(newRange.current.getAugs());
+`

@@ -7,11 +7,7 @@ import coffee from "../coffee.json";
 
 export default function Vis() {
 
-    const [emphVar, setEmphVar] = React.useState("Flavor");
-
     const ref = useRef("emphVal");
-    const draft = useRef(new Draft());
-    const newEmphasis = useRef(new Emphasis(emphVar, "min"));
 
     const [data, setData] = React.useState(coffee.slice(0, 10));
     
@@ -21,10 +17,8 @@ export default function Vis() {
                "marginRight":50,
                "marginBottom":50,
                "marginLeft":50};
-    let yScale;
-
     
-    function updatePlot() {
+    useEffect(() => {
 
         let svgElement = d3.select(ref.current);
 
@@ -35,7 +29,7 @@ export default function Vis() {
                         .domain(data.map(d => d["FIELD1"]))
                         .range([layout.marginLeft, layout.width - layout.marginRight]);
 
-        yScale = d3.scaleLinear()
+        let yScale = d3.scaleLinear()
                         .domain([d3.min(data, d => d.Flavor) - 0.5, d3.max(data, d => d["Flavor"])])
                         .range([layout.height - layout.marginBottom, layout.marginTop]);
 
@@ -84,34 +78,18 @@ export default function Vis() {
                   .attr("transform", ${"`"}translate(0, 40)${"`"})
                   .attr("fill", "black")
                   .text(d => d);
-    }
 
-    useEffect(() => {
-        updatePlot();
+        const draft = new Draft();
+        const newEmphasis = new Emphasis("Flavor", "min");
 
-        function alignY(d, i) {
-            return yScale(d["Flavor"])
-        }
-
-        function getText(d, i) {
-            return ${"`"}produced in ${"$"}{d.Country}${"`"}
-        }
-        
-        const styles = {"text": {"text-anchor":"end", "x": 490, "y":alignY, "text": getText}};
-        
-        newEmphasis.current.updateStyles(styles);
-
-        draft.current.chart(ref.current)
-                    .selection(bars)
-                    .x("FIELD1", xScale)
-                    .y("Flavor", yScale)
-                    .exclude({"name":["line"]})
-                    .augment(newEmphasis.current.getAugs());
+        draft.chart(ref.current)
+              .selection(bars)
+              .x("FIELD1", xScale)
+              .y("Flavor", yScale)
+              .exclude({"name":["regression", "label"]})
+              .augment(newEmphasis.getAugs());
 
     }, [data])
-
-    let controlStyle = {"display":"flex"};
-    let paragraphStyle = {"margin":"3px"};
 
     return (
         <div>

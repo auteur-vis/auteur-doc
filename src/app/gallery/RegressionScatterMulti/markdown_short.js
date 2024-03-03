@@ -1,17 +1,7 @@
-export const markdown_short = `const draft = useRef(new Draft());
+export const markdown_short = `import { Draft, Regression } from "auteur";
+
+const draft = useRef(new Draft());
 const mainRegression = useRef(new Regression());
-
-function alignY(d, i) {
-    return yScale(d["petalLength"])
-}
-
-function getText(d, i) {
-    return ${"`"}produced in ${"$"}{d.Country}${"`"}
-}
-
-const styles = {"text": {"text-anchor":"end", "x": 490, "y":alignY, "text": getText}};
-
-mainRegression.current.updateStyles(styles);
 
 draft.current.chart(ref.current)
             .selection(scatterpoints)
@@ -31,6 +21,5 @@ for (let s of species) {
     speciesRegression.selection(speciesSelection);
 
     draft.current.augment(speciesRegression.getAugs());
-
 }
 `

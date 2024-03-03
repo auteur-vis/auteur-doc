@@ -1,4 +1,6 @@
-export const markdown_short = `const [yThreshold, setYThreshold] = React.useState(7.25);
+export const markdown_short = `import { Draft, Threshold } from "auteur";
+
+const [yThreshold, setYThreshold] = React.useState(7.25);
 
 const draft = useRef(new Draft());
 const newYThreshold = useRef(new Threshold("Flavor", yThreshold, "geq"));
@@ -14,6 +16,6 @@ draft.current.chart(ref.current)
             .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)
-            .exclude({"rank":4})
+            .exclude({"name":["regression", "label"]})
             .augment(newYThreshold.current.getAugs());
 `

@@ -1,14 +1,17 @@
-export const markdown_short = `const upperBound = new DerivedValues('AverageTemperature', "AverageTemperatureUncertainty", "add");
+export const markdown_short = `import { Draft, DerivedValues } from "auteur";
 
-const lowerBound = new DerivedValues('AverageTemperature', "AverageTemperatureUncertainty", "sub");
+const upperBound = new DerivedValues('AverageTemperature',
+	"AverageTemperatureUncertainty", "add");
+const lowerBound = new DerivedValues('AverageTemperature',
+	"AverageTemperatureUncertainty", "sub");
 
 const draft = new Draft();
 
-draft.chart("#svg")
-.selection(lines)
-.x("date", xScale)
-.y("AverageTemperature", yScale)
-.exclude({"name":["fill"]})
-.augment(upperBound.getAugs())
-.augment(lowerBound.getAugs());
+draft.chart(ref.current)
+	.selection(lines)
+	.x("date", xScale)
+	.y("AverageTemperature", yScale)
+	.exclude({"name":["fill"]})
+	.augment(upperBound.getAugs())
+	.augment(lowerBound.getAugs());
 `

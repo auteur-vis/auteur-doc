@@ -1,4 +1,6 @@
-export const markdown_short = `const [yThreshold, setYThreshold] = React.useState(8);
+export const markdown_short = `import { Draft, Threshold } from "auteur";
+
+const [yThreshold, setYThreshold] = React.useState(8);
 
 const draft = useRef(new Draft());
 const newYThreshold = useRef(new Threshold("Flavor", yThreshold, "leq"));

@@ -104,7 +104,7 @@ export default function Vis() {
 
         const draft = new Draft();
 
-        draft.chart("#svg")
+        draft.chart(ref.current)
             .selection(lines)
             .x("date", xScale)
             .y("AverageTemperature", yScale)

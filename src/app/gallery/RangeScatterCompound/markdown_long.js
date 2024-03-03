@@ -31,13 +31,6 @@ export default function Vis() {
 
         let svgElement = d3.select(ref.current);
 
-        // create a tooltip
-        var tooltip = svgElement.select("#tooltip")
-                        .attr("text-anchor", "middle")
-                        .attr("font-family", "sans-serif")
-                        .attr("font-size", 10)
-                        .attr("opacity", 0);
-
         svgElement.attr("width", layout.width)
                 .attr("height", layout.height);
 
@@ -93,6 +86,7 @@ export default function Vis() {
                     .selection(scatterpoints)
                     .x("Aroma", xScale)
                     .y("Flavor", yScale)
+                    .exclude({"name":["regression", "label", "text"]})
                     .augment(newXRange.current.union(newYRange.current));
 
     }, [data])
@@ -181,23 +175,10 @@ export default function Vis() {
                     value={maxYThreshold}
                     onChange={(e) => updateYMax(e)} />
             </div>
-            <div>
-                <p>min y-threshold: </p>
-                <input
-                    type="range"
-                    id="quantity"
-                    name="quantity"
-                    min={d3.min(data, d => d.Flavor)}
-                    max={d3.max(data, d => d.Flavor)}
-                    step="0.01"
-                    value={minYThreshold}
-                    onChange={(e) => updateYMin(e)} />
-            </div>
             <svg id="less" ref={ref}>
                 <g id="mark" />
                 <g id="xAxis" />
                 <g id="yAxis" />
-                <text id="tooltip" />
             </svg>
         </div>
     )

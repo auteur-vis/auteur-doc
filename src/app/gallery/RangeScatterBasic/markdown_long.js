@@ -11,7 +11,7 @@ export default function Vis() {
     const [data, setData] = React.useState(coffee);
 
     let layout={"width":500,
-               "height":400,
+               "height":500,
                "marginTop":50,
                "marginRight":50,
                "marginBottom":50,

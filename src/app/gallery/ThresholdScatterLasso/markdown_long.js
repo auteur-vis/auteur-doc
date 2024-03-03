@@ -188,7 +188,7 @@ export default function Vis() {
                     .selection(scatterpoints)
                     .x("Aroma", xScale)
                     .y("Flavor", yScale)
-                    .exclude({"rank":4})
+                    .exclude({"name":["regression", "label"]})
                     .augment(newYThreshold.current.getAugs());
 
     }, [data])
@@ -217,7 +217,7 @@ export default function Vis() {
 
     return (
         <div>
-            <div style={{"display":"flex", "margin-left":"30px"}}>
+            <div style={{"display":"flex", "marginLeft":"30px"}}>
                 <p>Preferred Flavor threshold: </p>
                 <input
                     type="range"
@@ -226,7 +226,7 @@ export default function Vis() {
                     min="6" max="9"
                     step="0.01"
                     value={yThreshold}
-                    style={{"margin-left":"5px", "margin-right":"5px"}}
+                    style={{"marginLeft":"5px", "marginRight":"5px"}}
                     onChange={(e) => updateY(e)} />
                 <p>{yThreshold}</p>
             </div>

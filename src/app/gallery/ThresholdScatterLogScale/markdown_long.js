@@ -89,6 +89,7 @@ export default function Vis() {
                     .selection(scatterpoints)
                     .x("Flavor", xScale)
                     .y("Aroma", yScale)
+                    .exclude({"name":["label"]})
                     .augment(newYThreshold.current.getAugs());
 
     }, [data])

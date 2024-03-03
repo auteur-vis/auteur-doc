@@ -76,18 +76,6 @@ export default function Vis() {
                   .attr("fill", "black")
                   .text(d => d);
 
-        function alignY(d, i) {
-            return yScale(d["petalLength"])
-        }
-
-        function getText(d, i) {
-            return ${"`"}produced in ${"$"}{d.Country}${"`"}
-        }
-
-        const styles = {"text": {"text-anchor":"end", "x": 490, "y":alignY, "text": getText}};
-
-        mainRegression.current.updateStyles(styles);
-
         draft.current.chart(ref.current)
                     .selection(scatterpoints)
                     .x("sepalLength", xScale)
@@ -110,9 +98,6 @@ export default function Vis() {
         }
 
     }, [data])
-
-    let controlStyle = {"display":"flex"};
-    let paragraphStyle = {"margin":"3px"};
 
     return (
         <div>

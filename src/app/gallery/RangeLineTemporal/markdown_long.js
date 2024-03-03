@@ -12,7 +12,6 @@ export default function Vis() {
 
     const ref = useRef("linerange");
 
-    const draft = useRef(new Draft());
     const newRange = useRef(new Range("date", [minThreshold, maxThreshold], "closed"));
 
     const [data, setData] = React.useState(climate);
@@ -102,9 +101,7 @@ export default function Vis() {
                   .attr("fill", "black")
                   .text(d => d)
 
-        const styles = {"line": {"stroke": (d, i) => "red", "stroke-width": "2px"}};
-
-        newRange.current.updateStyles(styles);
+        const draft = useRef(new Draft());
 
         draft.current.chart(ref.current)
                     .selection(lines)

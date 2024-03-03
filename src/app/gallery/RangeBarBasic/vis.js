@@ -73,7 +73,7 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 							.attr("fill", d => colorScale(d))
 							.attr("fill-opacity", 0.5)
 
-		let legendText = svgElement.select("#legend")
+			let legendText = svgElement.select("#legend")
 							.selectAll(".legendText")
 							.data(reversed)
 							.join("text")

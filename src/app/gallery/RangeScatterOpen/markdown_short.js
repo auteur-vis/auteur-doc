@@ -1,4 +1,6 @@
-export const markdown_short = `const [maxThreshold, setMaxThreshold] = React.useState(8);
+export const markdown_short = `import { Draft, Range } from "auteur";
+
+const [maxThreshold, setMaxThreshold] = React.useState(8);
 const [minThreshold, setMinThreshold] = React.useState(6.5);
 
 const style = {"rect":{"fill":"#edcf7b", "opacity": 0.2}};

@@ -1,4 +1,6 @@
-export const markdown_short = `const draft = new Draft();
+export const markdown_short = `import { Draft, Threshold } from "auteur";
+
+const draft = new Draft();
 const newThreshold = new Threshold("Flavor", 8, "leq", style);
 
 let newAugs = newThreshold.getAugs();
