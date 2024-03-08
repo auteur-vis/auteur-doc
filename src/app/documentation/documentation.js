@@ -635,31 +635,11 @@ export default function Documentation() {
 
         <p className={styles.sectionContent}>Usage: <code className={styles.code}>new Draft()</code></p>
 
-        <h2 className={styles.sectionSubHeader}>.chart(el)</h2>
-        <p className={styles.sectionContent}>Defines the DOM element containing the svg chart.</p>
-        <p className={styles.sectionContent}>Parameters:</p>
-        <TableContainer component={Paper} style={{ boxShadow:"none", borderRadius:"0px" }}>
-          <Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
-            <TableBody>
-                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell component="th" scope="row">
-                    el
-                  </TableCell>
-                  <TableCell><b><i>str, default=None</i></b><br/>A css selector of DOM element containing the svg chart.</TableCell>
-                </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <Divider className={styles.divider} />
-
-        <h2 className={styles.sectionSubHeader}>.chart(selector)</h2>
-        <p className={styles.sectionContent}>A css selector that defines the svg that contains all elements of the visualization.</p>
+        <h2 className={styles.sectionSubHeader}>.layer(selector)</h2>
+        <p className={styles.sectionContent}>Defines the DOM element to which mark type augmentations will be added. Typically, this is the top-level svg element, but it can also be a g container.</p>
         <p className={styles.sectionContent}>Usage: <br />
         <code className={styles.code}>
-            {`.chart("svg")`}
-        </code><br />
-        <code className={styles.code}>
-            {`.chart("#{ID}")`}
+            {`.layer("svg")`}
         </code>
         </p>
         <p className={styles.sectionContent}>Parameters:</p>
@@ -668,9 +648,9 @@ export default function Documentation() {
             <TableBody>
                 <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell component="th" scope="row">
-                    selector
+                    el
                   </TableCell>
-                  <TableCell><b><i>str, default=None</i></b><br/>A css selector for an svg.</TableCell>
+                  <TableCell><b><i>str, default=None</i></b><br/>A css selector for an svg or g element.</TableCell>
                 </TableRow>
             </TableBody>
           </Table>
@@ -678,7 +658,7 @@ export default function Documentation() {
         <Divider className={styles.divider} />
 
         <h2 className={styles.sectionSubHeader}>.select(selector)</h2>
-        <p className={styles.sectionContent}>A css selector that defines the svg element(s) that should be selected for when applying the augmentations.
+        <p className={styles.sectionContent}>A css selector that defines the svg element(s) that should be considered when applying the augmentations.
         For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.sectionContent}>.select()</code> or
         <code className={styles.sectionContent}>.selection()</code> needs to be defined.</p>
         <p className={styles.sectionContent}>Usage: <br />
@@ -705,7 +685,7 @@ export default function Documentation() {
         <Divider className={styles.divider} />
 
         <h2 className={styles.sectionSubHeader}>.selection(selection)</h2>
-        <p className={styles.sectionContent}>A d3 selection that defines the svg element(s) that should be selected for when applying the augmentations.
+        <p className={styles.sectionContent}>A d3 selection that defines the svg element(s) that should be considered when applying the augmentations.
         For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.sectionContent}>.select()</code> or
         <code className={styles.sectionContent}>.selection()</code> needs to be defined.</p>
         <p className={styles.sectionContent}>Usage: <br />
