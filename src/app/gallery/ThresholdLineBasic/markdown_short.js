@@ -9,7 +9,7 @@ const styles = {"line": {"stroke": (d, i) => "red", "stroke-width": "2px"}};
 
 newXThreshold.current.updateStyles(styles);
 
-draft.current.chart(ref.current)
+draft.current.layer(ref.current)
             .selection(lines)
             .x("date", xScale)
             .y("AverageTemperature", yScale)

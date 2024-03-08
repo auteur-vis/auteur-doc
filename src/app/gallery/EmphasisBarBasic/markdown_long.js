@@ -82,11 +82,11 @@ export default function Vis() {
         const draft = new Draft();
         const newEmphasis = new Emphasis("Flavor", "min");
 
-        draft.chart(ref.current)
+        draft.layer(ref.current)
               .selection(bars)
               .x("FIELD1", xScale)
               .y("Flavor", yScale)
-              .exclude({"name":["regression", "label"]})
+              .exclude({"name":["label"]})
               .augment(newEmphasis.getAugs());
 
     }, [data])

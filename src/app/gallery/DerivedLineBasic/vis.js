@@ -5,7 +5,7 @@ import { Draft, DerivedValues } from "auteur";
 
 import climate from "../climate.json";
 
-export default function Vis({size={"width":500, "height":500}, sparse=false}) {
+export default function Vis({size={"width":900, "height":500}, sparse=false}) {
 
 	const ref = useRef("lineformula");
 
@@ -104,7 +104,7 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 
 		const draft = new Draft();
 
-		draft.chart(ref.current)
+		draft.layer(ref.current)
 			.selection(lines)
 			.x("date", xScale)
 			.y("AverageTemperature", yScale)

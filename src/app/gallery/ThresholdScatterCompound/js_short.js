@@ -8,7 +8,7 @@ const draft = new Draft();
 const newXThreshold = new Threshold("Aroma", xThreshold, "leq");
 const newYThreshold = new Threshold("Flavor", yThreshold, "leq");
 
-draft.chart("#svg")
+draft.layer("#svg")
     .selection(scatterpoints)
     .x("Aroma", xScale)
     .y("Flavor", yScale)

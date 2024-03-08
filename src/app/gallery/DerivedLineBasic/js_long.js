@@ -8,7 +8,7 @@ export const Vis = () => {
 
   const data = climate.filter(d => d.year >= 2012);
 
-  let layout={"width":500,
+  let layout={"width":900,
              "height":500,
              "marginTop":50,
              "marginRight":50,
@@ -99,7 +99,7 @@ export const Vis = () => {
 
   const draft = new Draft();
 
-  draft.chart("#svg")
+  draft.layer("#svg")
       .selection(lines)
       .x("date", xScale)
       .y("AverageTemperature", yScale)

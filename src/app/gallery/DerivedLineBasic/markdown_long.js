@@ -11,7 +11,7 @@ export default function Vis() {
 
     const [data, setData] = React.useState(climate.filter(d => d.year >= 2012));
 
-    let layout={"width":500,
+    let layout={"width":900,
                "height":500,
                "marginTop":50,
                "marginRight":50,
@@ -104,7 +104,7 @@ export default function Vis() {
 
         const draft = new Draft();
 
-        draft.chart(ref.current)
+        draft.layer(ref.current)
             .selection(lines)
             .x("date", xScale)
             .y("AverageTemperature", yScale)

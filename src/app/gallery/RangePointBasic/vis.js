@@ -121,7 +121,7 @@ export default function Vis({size={"width":560, "height":500}, sparse=false}) {
 
 		const draft = new Draft();
 
-		draft.chart("#svg")
+		draft.layer("#svg")
 			.selection(groups)
 			.x("country", xScale)
 			.y("count", yScale)

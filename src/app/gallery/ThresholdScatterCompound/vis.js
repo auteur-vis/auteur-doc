@@ -28,13 +28,13 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 	function merge(threshold1, threshold2, mergeValue) {
 
 		if (mergeValue === "union") {
-			return threshold1.union(threshold2)
+			return threshold1.union(threshold2);
 		} else if (mergeValue === "intersect") {
-			return threshold1.intersect(threshold2)
+			return threshold1.intersect(threshold2);
 		} else if (mergeValue === "difference") {
-			return threshold1.difference(threshold2)
+			return threshold1.difference(threshold2);
 		} else if (mergeValue === "symmdiff") {
-			return threshold1.symmdiff(threshold2)
+			return threshold1.symmdiff(threshold2);
 		}
 
 		return threshold1.getAugs().concat(threshold2.getAugs())
@@ -95,7 +95,7 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 				  .attr("fill", "black")
 				  .text(d => d)
 
-		draft.current.chart(ref.current)
+		draft.current.layer(ref.current)
 					.selection(scatterpoints)
 					.x("Aroma", xScale)
 					.y("Flavor", yScale)

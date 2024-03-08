@@ -11,7 +11,7 @@ yThreshold.updateStyles(pointStyles)
 
 const draft = new Draft();
 
-draft.chart("#svg")
+draft.layer("#svg")
   .x("date", xScale)
   .y("AverageTemperature", yScale)
   .exclude({"name":["fill", "text", "regression"]})

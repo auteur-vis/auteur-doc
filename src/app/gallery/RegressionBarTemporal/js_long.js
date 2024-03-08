@@ -69,11 +69,14 @@ export const Vis = () => {
             .attr("fill", "black")
             .text(d => d)
 
-  draft.chart("#svg")
+  const style = {"regression":{"transform":${"`"}translate(${"$"}{xScale.bandwidth()/2}, 0)${"`"}}};
+
+  regression.updateStyles(style);
+
+  draft.layer("#svg")
       .selection(bars)
       .x("month", xScale)
       .y("AverageTemperature", yScale)
-      .exclude({"name":["stroke", "text", "label", "regression"]})
       .augment(regression.getAugs());
 
 }

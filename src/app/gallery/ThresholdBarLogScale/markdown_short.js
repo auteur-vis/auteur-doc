@@ -6,7 +6,7 @@ const [barOperation, setBarOperation] = useState("leq");
 const draft = useRef(new Draft());
 const newBarThreshold = useRef(new Threshold("count", barThreshold, barOperation));
 
-draft.current.chart(ref.current)
+draft.current.layer(ref.current)
             .selection(bars)
             .x("Country", xScale)
             .y("count", yScale)

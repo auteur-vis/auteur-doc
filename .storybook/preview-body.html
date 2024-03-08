@@ -1,25 +1,19 @@
 <div>
   <div>
-      <p>min threshold: </p>
-      <input
-          type="range"
-          id="selectMin"
-          name="quantity"
-          min=8
-          max=8.8
-          step="0.01"
-          value="8" />
-  </div>
-  <div>
-      <p>max threshold: </p>
-      <input
-          type="range"
-          id="selectMax"
-          name="quantity"
-          min=8
-          max=8.8
-          step="0.01"
-          value="8.5" />
+    <p>Highlight group when value is between min:</p>
+    <input
+      type="range"
+      id="minSelect"
+      name="quantity"
+      min="0" max="432629"
+      value="9930" />
+    <p>max:</p>
+    <input
+      type="range"
+      id="maxSelect"
+      name="quantity"
+      min="0" max="432629"
+      value="12000" />
   </div>
   <svg id="svg">
   	  <g id="augmentations" />

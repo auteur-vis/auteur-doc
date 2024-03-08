@@ -5,7 +5,7 @@ const newThreshold = new Threshold("Flavor", 8, "leq", style);
 
 let newAugs = newThreshold.getAugs();
 
-draft.chart("#svg")
+draft.layer("#svg")
     .selection(bars)
     .x("FIELD1", xScale)
     .y("Flavor", yScale)

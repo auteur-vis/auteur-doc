@@ -10,7 +10,7 @@ const draft = useRef(new Draft());
 const newXRange = useRef(new Range("Aroma", [minXThreshold, maxXThreshold], "open"));
 const newYRange = useRef(new Range("Flavor", [minYThreshold, maxYThreshold], "closed"));
 
-draft.current.chart(ref.current)
+draft.current.layer(ref.current)
             .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)

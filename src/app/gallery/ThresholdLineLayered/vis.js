@@ -120,13 +120,13 @@ export default function Vis({size={"width":900, "height":500}, sparse=false}) {
 
 		const draft = new Draft();
 
-		draft.chart(ref.current)
+		draft.layer(ref.current)
 			.x("date", xScale)
 			.y("AverageTemperature", yScale)
-			.exclude({"name":["fill", "text"]});
+			.exclude({"name":["fill", "text", "regression"]});
 			
 		if (sparse) {
-			draft.exclude({"name":["label", "regression", "text"]}).augment(yThreshold.getAugs());
+			draft.exclude({"name":["label"]}).augment(yThreshold.getAugs());
 		} else {
 			draft.augment(yThreshold.getAugs());
 		}

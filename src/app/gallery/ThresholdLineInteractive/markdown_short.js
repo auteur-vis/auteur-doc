@@ -9,7 +9,7 @@ const styles = {"stroke": {"stroke": (d, i) => colorScale(d[0].City), "stroke-wi
 
 newYThreshold.current.updateStyles(styles);
 
-draft.current.chart(ref.current)
+draft.current.layer(ref.current)
             .selection(lines)
             .x("date", xScale)
             .y("AverageTemperature", yScale)

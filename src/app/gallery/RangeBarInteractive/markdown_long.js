@@ -87,7 +87,7 @@ export default function Vis() {
                   .text(d => d);
         let newAugs = newRange.current.getAugs();
 
-        draft.current.chart(ref.current)
+        draft.current.layer(ref.current)
                   .selection(bars)
                   .x("FIELD1", xScale)
                   .y("Flavor", yScale)

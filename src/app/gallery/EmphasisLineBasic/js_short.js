@@ -7,7 +7,7 @@ const styles = {"stroke": {"stroke": (d, i) => colorScale(d[0].City), "stroke-wi
 
 newYEmphasis.updateStyles(styles);
 
-draft.chart("#svg")
+draft.layer("#svg")
     .selection(lines)
     .x("date", xScale)
     .y("AverageTemperature", yScale)

@@ -74,7 +74,7 @@ export const Vis = () => {
 
   let newAugs = newThreshold.getAugs();
 
-  draft.chart("#svg")
+  draft.layer("#svg")
         .selection(bars)
         .x("FIELD1", xScale)
         .y("Flavor", yScale)

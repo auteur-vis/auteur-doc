@@ -7,7 +7,7 @@ const newRange = new Range("AverageTemperature", [minThreshold, maxThreshold], "
 
 const draft = new Draft();
 
-draft.chart("#svg")
+draft.layer("#svg")
     .selection(lines)
     .x("date", xScale)
     .y("AverageTemperature", yScale)

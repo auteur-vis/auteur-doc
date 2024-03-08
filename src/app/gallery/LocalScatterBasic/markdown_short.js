@@ -13,7 +13,7 @@ const styles = {"mark": {"fill":"none", "stroke": "red", "r": (d, i) => sizeScal
 
 newLocal.current.updateStyles(styles);
 
-draft.current.chart(ref.current)
+draft.current.layer(ref.current)
             .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)

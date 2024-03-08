@@ -72,7 +72,7 @@ export const Vis = () => {
             .attr("fill", "black")
             .text(d => d);
 
-  draft.chart("#svg")
+  draft.layer("#svg")
               .selection(scatterpoints)
               .x("sepalLength", xScale)
               .y("petalLength", yScale)

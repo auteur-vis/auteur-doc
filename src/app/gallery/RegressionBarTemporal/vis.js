@@ -73,15 +73,14 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 				  .attr("fill", "black")
 				  .text(d => d)
 
-		const style = {"fill":{"fill":"green"}, "regression":{"transform":`translate(${xScale.bandwidth()/2}, 0)`}};
+		const style = {"regression":{"transform":`translate(${xScale.bandwidth()/2}, 0)`}};
 
 		regression.current.updateStyles(style);
 
-		draft.current.chart(ref.current)
+		draft.current.layer(ref.current)
 					.selection(bars)
 					.x("month", xScale)
 					.y("AverageTemperature", yScale)
-					.exclude({"name":["stroke", "text", "label", "regression"]})
 					.augment(regression.current.getAugs());
 
 	}, [data])

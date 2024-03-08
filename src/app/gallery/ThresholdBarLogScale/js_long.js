@@ -88,7 +88,7 @@ export const Vis = () => {
             .attr("fill", "black")
             .text(d => d)
 
-  draft.chart("#svg")
+  draft.layer("#svg")
       .selection(bars)
       .x("Country", xScale)
       .y("count", yScale)

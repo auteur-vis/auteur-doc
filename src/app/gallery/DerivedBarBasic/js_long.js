@@ -81,7 +81,7 @@ export const Vis = () => {
   const draft = new Draft();
   const newDerivedValues = new DerivedValues("Flavor", 0.1, "sub", undefined, style);
 
-  draft.chart("#svg")
+  draft.layer("#svg")
         .selection(bars)
         .x("FIELD1", xScale)
         .y("Flavor", yScale)

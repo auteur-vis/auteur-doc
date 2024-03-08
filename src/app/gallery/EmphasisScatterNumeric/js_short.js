@@ -6,7 +6,7 @@ let emphVal = 8;
 const draft = new Draft();
 const newEmphasis = new Emphasis(emphVar, emphVal);
 
-draft.chart("#svg")
+draft.layer("#svg")
 	  .selection(scatterpoints)
 	  .x("Aroma", xScale)
 	  .y("Flavor", yScale)

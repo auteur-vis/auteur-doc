@@ -14,7 +14,7 @@ const styles = {"mark": {"fill":"none", "stroke": "red", "r": (d, i) => sizeScal
 
 newLocal.updateStyles(styles);
 
-draft.chart("#svg")
+draft.layer("#svg")
   .selection(scatterpoints)
   .x("Aroma", xScale)
   .y("Flavor", yScale)

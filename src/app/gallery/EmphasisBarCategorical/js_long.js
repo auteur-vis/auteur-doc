@@ -76,7 +76,7 @@ export const Vis = () => {
 
     newEmphasis.updateStyles(style);
 
-    draft.chart("#svg")
+    draft.layer("#svg")
         .selection(bars)
         .x("Country", xScale)
         .y("count", yScale)

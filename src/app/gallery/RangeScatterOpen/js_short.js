@@ -8,8 +8,7 @@ const style = {"rect":{"fill":"#edcf7b", "opacity": 0.2}};
 const draft = new Draft();
 const newRange = new Range("Aroma", [minThreshold, maxThreshold], "open", style);
 
-draft.chart("#svg")
-    .layer("#augmentations")
+draft.layer("#svg")
     .selection(scatterpoints)
     .x("Aroma", xScale)
     .y("Flavor", yScale)

@@ -186,7 +186,7 @@ export const Vis = () => {
 
   newYThreshold.updateStyles(styles);
 
-  draft.chart("#svg")
+  draft.layer("#svg")
       .selection(scatterpoints)
       .x("Aroma", xScale)
       .y("Flavor", yScale)

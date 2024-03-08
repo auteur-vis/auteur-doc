@@ -6,7 +6,7 @@ let barOperation = "leq";
 const draft = new Draft();
 const newBarThreshold = new Threshold("count", barThreshold, barOperation);
 
-draft.chart("#svg")
+draft.layer("#svg")
 	.selection(bars)
 	.x("Country", xScale)
 	.y("count", yScale)

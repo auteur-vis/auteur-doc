@@ -86,11 +86,11 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 				  .attr("fill", "black")
 				  .text(d => d);
 
-		draft.current.chart(ref.current)
+		draft.current.layer(ref.current)
 					.selection(bars)
 					.x("FIELD1", xScale)
 					.y("Flavor", yScale)
-					.exclude({"name":["label", "regression"]});
+					.exclude({"name":["label"]});
 	}
 
 	useEffect(() => {
@@ -107,7 +107,7 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 		newEmphasis.current.updateStyles(styles);
 
 		if (sparse) {
-			draft.current.exclude({"name":["label", "regression", "line"]}).augment(newEmphasis.current.getAugs());
+			draft.current.augment(newEmphasis.current.getAugs());
 		} else {
 			draft.current.augment(newEmphasis.current.getAugs());
 		}

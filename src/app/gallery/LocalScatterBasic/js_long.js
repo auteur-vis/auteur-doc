@@ -75,7 +75,7 @@ export const Vis = () => {
 
   newLocal.updateStyles(styles);
 
-  draft.chart("#svg")
+  draft.layer("#svg")
       .selection(scatterpoints)
       .x("Aroma", xScale)
       .y("Flavor", yScale)

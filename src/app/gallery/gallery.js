@@ -24,6 +24,8 @@ import EmphasisScatterCompound from "./EmphasisScatterCompound/vis";
 import EmphasisBarBasic from "./EmphasisBarBasic/vis";
 import EmphasisBarCategorical from "./EmphasisBarCategorical/vis";
 import EmphasisLineBasic from "./EmphasisLineBasic/vis";
+import EmphasisTreeBasic from "./EmphasisTreeBasic/vis";
+import EmphasisSunburstBasic from "./EmphasisSunburstBasic/vis";
 
 import ThresholdScatterBasic from "./ThresholdScatterBasic/vis";
 import ThresholdScatterLess from "./ThresholdScatterLess/vis";
@@ -37,6 +39,8 @@ import ThresholdBarLogScale from "./ThresholdBarLogScale/vis";
 import ThresholdLineBasic from "./ThresholdLineBasic/vis";
 import ThresholdLineInteractive from "./ThresholdLineInteractive/vis";
 import ThresholdLineLayered from "./ThresholdLineLayered/vis";
+import ThresholdTreeBasic from "./ThresholdTreeBasic/vis";
+import ThresholdSunburstBasic from "./ThresholdSunburstBasic/vis";
 
 import RangeScatterBasic from "./RangeScatterBasic/vis";
 import RangeScatterIQR from "./RangeScatterIQR/vis";
@@ -48,6 +52,8 @@ import RangeBarBasic from "./RangeBarBasic/vis";
 import RangeBarInteractive from "./RangeBarInteractive/vis";
 import RangeLineBasic from "./RangeLineBasic/vis";
 import RangeLineTemporal from "./RangeLineTemporal/vis";
+import RangeTreeBasic from "./RangeTreeBasic/vis";
+import RangeSunburstBasic from "./RangeSunburstBasic/vis";
 
 import DerivedScatterBasic from "./DerivedScatterBasic/vis";
 import DerivedBarBasic from "./DerivedBarBasic/vis";
@@ -67,7 +73,9 @@ export default function Gallery() {
     "EmphasisScatterCompound": <EmphasisScatterCompound key="EmphasisScatterCompound" size={{"width":250, "height":250}} sparse={true} />,
     "EmphasisBarBasic": <EmphasisBarBasic key="EmphasisBarBasic" size={{"width":250, "height":250}} sparse={true} />,
     "EmphasisBarCategorical": <EmphasisBarCategorical key="EmphasisBarCategorical" size={{"width":250, "height":250}} sparse={true} />,
-    "EmphasisLineBasic": <EmphasisLineBasic key="EmphasisLineBasic" size={{"width":250, "height":250}} sparse={true} />
+    "EmphasisLineBasic": <EmphasisLineBasic key="EmphasisLineBasic" size={{"width":250, "height":250}} sparse={true} />,
+    "EmphasisTreeBasic": <EmphasisTreeBasic key="EmphasisTreeBasic" size={{"width":170, "height":170}} sparse={true} />,
+    "EmphasisSunburstBasic": <EmphasisSunburstBasic key="EmphasisSunburstBasic" size={{"width":225, "height":225}} sparse={true} />
   };
 
   const allThreshold = {"ThresholdScatterBasic": <ThresholdScatterBasic key="ThresholdScatterBasic" size={{"width":250, "height":250}} sparse={true} />,
@@ -81,7 +89,9 @@ export default function Gallery() {
     "ThresholdBarLogScale": <ThresholdBarLogScale key="ThresholdBarLogScale" size={{"width":250, "height":250}} sparse={true} />,
     "ThresholdLineBasic": <ThresholdLineBasic key="ThresholdLineBasic" size={{"width":250, "height":250}} sparse={true} />,
     "ThresholdLineInteractive": <ThresholdLineInteractive key="ThresholdLineInteractive" size={{"width":250, "height":250}} sparse={true} />,
-    "ThresholdLineLayered": <ThresholdLineLayered key="ThresholdLineLayered" size={{"width":250, "height":250}} sparse={true} />
+    "ThresholdLineLayered": <ThresholdLineLayered key="ThresholdLineLayered" size={{"width":250, "height":250}} sparse={true} />,
+    "ThresholdTreeBasic": <ThresholdTreeBasic key="ThresholdTreeBasic" size={{"width":170, "height":170}} sparse={true} />,
+    "ThresholdSunburstBasic": <ThresholdSunburstBasic key="ThresholdSunburstBasic" size={{"width":225, "height":225}} sparse={true} />
   };
 
   const allRange = {"RangeScatterBasic": <RangeScatterBasic key="RangeScatterBasic" size={{"width":250, "height":250}} sparse={true} />,
@@ -93,7 +103,9 @@ export default function Gallery() {
     "RangeBarBasic": <RangeBarBasic key="RangeBarBasic" size={{"width":250, "height":250}} sparse={true} />,
     "RangeBarInteractive": <RangeBarInteractive key="RangeBarInteractive" size={{"width":250, "height":250}} sparse={true} />,
     "RangeLineBasic": <RangeLineBasic key="RangeLineBasic" size={{"width":250, "height":250}} sparse={true} />,
-    "RangeLineTemporal": <RangeLineTemporal key="RangeLineTemporal" size={{"width":250, "height":250}} sparse={true} />
+    "RangeLineTemporal": <RangeLineTemporal key="RangeLineTemporal" size={{"width":250, "height":250}} sparse={true} />,
+    "RangeTreeBasic": <RangeTreeBasic key="RangeTreeBasic" size={{"width":170, "height":170}} sparse={true} />,
+    "RangeSunburstBasic": <RangeSunburstBasic key="RangeSunburstBasic" size={{"width":225, "height":225}} sparse={true} />
   };
 
   const allDerived = {"DerivedScatterBasic": <DerivedScatterBasic key="DerivedScatterBasic" size={{"width":250, "height":250}} sparse={true} />,

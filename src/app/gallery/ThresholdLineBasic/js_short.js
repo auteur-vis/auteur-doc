@@ -9,7 +9,7 @@ const styles = {"line": {"stroke": (d, i) => "red", "stroke-width": "2px"}};
 
 newXThreshold.updateStyles(styles);
 
-draft.chart("#svg")
+draft.layer("#svg")
     .selection(lines)
     .x("date", xScale)
     .y("AverageTemperature", yScale)

@@ -99,7 +99,7 @@ export const Vis = () => {
 
   const draft = new Draft();
 
-  draft.chart("#svg")
+  draft.layer("#svg")
       .selection(bars)
       .x("FIELD1", xScale)
       .y("Flavor", yScale)

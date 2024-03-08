@@ -1,8 +1,8 @@
 import * as d3 from "d3";
 
-import { Draft, Regression } from "auteur";
+import { Draft, Range } from "auteur";
 
-import climate from "../../public/climate.json";
+import data from "../../public/hierarchy.json";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -11,75 +11,114 @@ export default {
 
 export const Vis = () => {
 
-  const draft = new Draft();
-  const regression = new Regression();
+  const chart = new Draft();
 
-  const data = climate.filter(d => d.year == 2005 && d.City == "Los Angeles");
+  let minVal = 9930;
+  let maxVal = 12000;
+  const newRange = new Range("value", [minVal, maxVal]);
 
-  let layout={"width":500,
-             "height":500,
-             "marginTop":50,
-             "marginRight":50,
-             "marginBottom":50,
-             "marginLeft":50};
+  let minSelect = document.getElementById('minSelect');
+  minSelect.addEventListener(
+    'change',
+    function(e) { updateMin(e); },
+    false
+  );
 
-  let svgElement = d3.select("#svg");
+  let maxSelect = document.getElementById('maxSelect');
+  maxSelect.addEventListener(
+    'change',
+    function(e) { updateMax(e); },
+    false
+  );
 
-  svgElement.attr("width", layout.width)
-          .attr("height", layout.height);
+  let layout={"width":900,
+           "height":900,
+           "marginTop":50,
+           "marginRight":50,
+           "marginBottom":50,
+           "marginLeft":50};
 
-  let xScale = d3.scaleBand()
-                  .domain(data.map(d => d["month"]))
-                  .range([layout.marginLeft, layout.width - layout.marginRight]);
+  const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
+  const radius = layout.width / 2;
 
-  let yScale = d3.scaleLinear()
-                  .domain([0, d3.max(data, d => d["AverageTemperature"])])
-                  .range([layout.height - layout.marginBottom, layout.marginTop]);
+  // Prepare the layout.
+  const partition = data => d3.partition()
+    .size([2 * Math.PI, radius])
+  (d3.hierarchy(data)
+    .sum(d => d.value)
+    .sort((a, b) => b.value - a.value));
 
-  let bars = svgElement.select("#mark")
-                      .selectAll(".bar")
-                      .data(data)
-                      .join("rect")
-                      .attr("class", "bar")
-                      .attr("x", d => xScale(d["month"]) + 1)
-                      .attr("y", d => yScale(d["AverageTemperature"]))
-                      .attr("width", xScale.bandwidth() - 2)
-                      .attr("height", d => yScale(0) - yScale(d["AverageTemperature"]))
-                      .attr("fill", "steelblue")
-                      .attr("fill-opacity", 0.75);
+  const arc = d3.arc()
+    .startAngle(d => d.x0)
+    .endAngle(d => d.x1)
+    .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
+    .padRadius(radius / 2)
+    .innerRadius(d => d.y0)
+    .outerRadius(d => d.y1 - 1);
 
-  svgElement.select("#xAxis")
-            .call(d3.axisBottom(xScale))
-            .attr("transform", `translate(0, ${layout.height - layout.marginBottom})`);
+  const root = partition(data);
 
-  svgElement.select("#xAxis").selectAll("#xTitle")
-            .data(["Month"])
-            .join("text")
-            .attr("id", "xTitle")
-            .attr("text-anchor", "middle")
-            .attr("transform", `translate(${layout.width/2}, 30)`)
-            .attr("fill", "black")
-            .text(d => d);
+  const rays = root.descendants().filter(d => d.depth && (d.y0 + d.y1) / 2 * (d.x1 - d.x0) > 10);
 
-  svgElement.select("#yAxis")
-            .call(d3.axisLeft(yScale).ticks(5))
-            .attr("transform", `translate(${layout.marginLeft}, 0)`);
+  let svg = d3.select("#svg");
 
-  svgElement.select("#yAxis").selectAll("#yTitle")
-            .data(["Average Temperature"])
-            .join("text")
-            .attr("id", "yTitle")
-            .attr("text-anchor", "middle")
-            .attr("transform", `translate(0, 40)`)
-            .attr("fill", "black")
-            .text(d => d)
+  svg.attr("width", layout.width)
+    .attr("height", layout.height);
 
-  draft.chart("#svg")
-      .selection(bars)
-      .x("month", xScale)
-      .y("AverageTemperature", yScale)
-      .exclude({"name":["stroke", "text", "label", "regression"]})
-      .augment(regression.getAugs());
+  const format = d3.format(",d");
+  let arcContainer = svg.select("#mark")
+      .attr("fill-opacity", 0.6)
+      .attr("transform", `translate(${layout.width / 2}, ${layout.height / 2})`)
+
+  let arcs = arcContainer.selectAll("path")
+    .data(rays)
+    .join("path")
+      .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
+      .attr("d", arc)
+  
+  arcs.append("title")
+    .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
+
+  // Add a label for each element.
+  svg.append("g")
+      .attr("pointer-events", "none")
+      .attr("text-anchor", "middle")
+      .attr("font-size", 10)
+      .attr("font-family", "sans-serif")
+      .attr("transform", `translate(${layout.width / 2}, ${layout.height / 2})`)
+    .selectAll("text")
+    .data(root.descendants().filter(d => d.depth && (d.y0 + d.y1) / 2 * (d.x1 - d.x0) > 10))
+    .join("text")
+      .attr("transform", function(d) {
+        const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
+        const y = (d.y0 + d.y1) / 2;
+        return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
+      })
+      .attr("dy", "0.35em")
+      .text(d => d.data.name);
+
+  chart.chart("#svg")
+        .selection(arcs)
+        .exclude({"name":["fill"]})
+        .augment(newRange.getAugs());
+
+  function updateMin(e) {
+    minVal = e.target.value;
+
+    newRange.updateVal([minVal, maxVal]);
+    let newAugs = newRange.getAugs();
+
+    chart.augment(newAugs);
+  }
+
+  function updateMax(e) {
+    maxVal = e.target.value;
+
+    newRange.updateVal([minVal, maxVal]);
+    let newAugs = newRange.getAugs();
+
+    chart.augment(newAugs);
+  }
 
 }
 

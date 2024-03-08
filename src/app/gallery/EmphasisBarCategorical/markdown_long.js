@@ -81,7 +81,7 @@ export default function Vis() {
 
         newEmphasis.updateStyles(style);
 
-        draft.chart(ref.current)
+        draft.layer(ref.current)
             .selection(bars)
             .x("Country", xScale)
             .y("count", yScale)

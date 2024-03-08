@@ -12,7 +12,7 @@ const styles = {"fill": {"fill": (d, i) => colorScale(d.Flavor)}};
 
 newYThreshold.current.updateStyles(styles);
 
-draft.current.chart(ref.current)
+draft.current.layer(ref.current)
             .selection(scatterpoints)
             .x("Flavor", xScale)
             .y("Aroma", yScale)

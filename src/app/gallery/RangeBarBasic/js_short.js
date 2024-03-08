@@ -7,7 +7,7 @@ range.updateStyles(styles);
 
 const draft = new Draft();
 
-draft.chart("#svg")
+draft.layer("#svg")
   .selection(groups)
   .x("country", xScale)
   .y("count", yScale)

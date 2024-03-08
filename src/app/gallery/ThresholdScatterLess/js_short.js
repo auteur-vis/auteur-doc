@@ -12,7 +12,7 @@ const styles = {"fill": {"fill": (d, i) => colorScale(d.Aroma)}};
 
 newYThreshold.updateStyles(styles);
 
-draft.chart("#svg")
+draft.layer("#svg")
     .selection(scatterpoints)
     .x("Aroma", xScale)
     .y("Flavor", yScale)

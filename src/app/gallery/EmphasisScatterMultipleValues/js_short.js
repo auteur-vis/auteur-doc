@@ -13,7 +13,7 @@ const styles = {"fill": {"fill": (d, i) => colorScale(d.Flavor)}};
 
 newEmphasis.updateStyles(styles);
 
-draft.chart("#svg")
+draft.layer("#svg")
             .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)

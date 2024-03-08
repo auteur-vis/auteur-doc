@@ -86,7 +86,7 @@ export default function Vis() {
 
         newEmphasis.current.updateStyles(styles);
 
-        draft.current.chart(ref.current)
+        draft.current.layer(ref.current)
                     .selection(scatterpoints)
                     .x("Aroma", xScale)
                     .y("Flavor", yScale)

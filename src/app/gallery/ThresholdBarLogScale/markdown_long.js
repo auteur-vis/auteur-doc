@@ -78,7 +78,7 @@ export default function Vis() {
                   .attr("fill", "black")
                   .text(d => d);
 
-        draft.current.chart(ref.current)
+        draft.current.layer(ref.current)
                     .selection(bars)
                     .x("Country", xScale)
                     .y("count", yScale)

@@ -5,7 +5,7 @@ const augmentations = yThreshold.getAugs();
 
 const draft = new Draft();
 
-draft.chart("#svg")
+draft.layer("#svg")
   .selection(scatterpoints)
   .x("Aroma", xScale)
   .y("Flavor", yScale)

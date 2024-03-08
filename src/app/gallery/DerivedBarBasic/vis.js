@@ -86,7 +86,7 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 		const draft = new Draft();
 		const newDerivedValues = new DerivedValues("Flavor", 0.1, "sub", undefined, style);
 
-		draft.chart(ref.current)
+		draft.layer(ref.current)
 					.selection(bars)
 					.x("FIELD1", xScale)
 					.y("Flavor", yScale)

@@ -101,15 +101,14 @@ export default function Vis() {
                   .attr("fill", "black")
                   .text(d => d)
 
-        const draft = useRef(new Draft());
+        const draft = new Draft();
 
-        draft.current.chart(ref.current)
-                    .selection(lines)
-                    .layer("#augmentations")
-                    .x("date", xScale)
-                    .y("AverageTemperature", yScale)
-                    .exclude({"name": ["text", "opacity"]})
-                    .augment(newRange.current.getAugs());
+        draft.layer(ref.current)
+            .selection(lines)
+            .x("date", xScale)
+            .y("AverageTemperature", yScale)
+            .exclude({"name": ["text", "opacity"]})
+            .augment(newRange.current.getAugs());
 
     }, [data])
 

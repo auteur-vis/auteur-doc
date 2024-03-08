@@ -7,9 +7,8 @@ const newRange = new Range("date", [minThreshold, maxThreshold], "closed");
 
 const draft = new Draft();
 
-draft.chart("#svg")
+draft.layer("#svg")
     .selection(lines)
-    .layer("#augmentations")
     .x("date", xScale)
     .y("AverageTemperature", yScale)
     .exclude({"name": ["text", "opacity"]})

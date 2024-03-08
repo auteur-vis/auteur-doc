@@ -6,7 +6,7 @@ const [yStatistic, setYStatistic] = useState("mean");
 const draft = useRef(new Draft());
 const newYThreshold = useRef(new Threshold("Flavor", yStatistic, "leq"));
 
-draft.current.chart(ref.current)
+draft.current.layer(ref.current)
             .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)

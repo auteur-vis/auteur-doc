@@ -84,7 +84,7 @@ export default function Vis() {
 
         newDerivedValues.updateStyles(newStyle);
 
-        draft.chart(ref.current)
+        draft.layer(ref.current)
                     .selection(scatterpoints)
                     .x("Aroma", xScale)
                     .y("Flavor", yScale)

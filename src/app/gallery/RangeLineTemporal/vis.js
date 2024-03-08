@@ -106,9 +106,8 @@ export default function Vis({size={"width":900, "height":500}, sparse=false}) {
 
 		newRange.current.updateStyles(styles);
 
-		draft.current.chart(ref.current)
+		draft.current.layer(ref.current)
 					.selection(lines)
-					.layer("#augmentations")
 					.x("date", xScale)
 					.y("AverageTemperature", yScale)
 					.exclude({"name":["label", "regression", "text", "opacity"]})

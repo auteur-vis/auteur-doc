@@ -74,9 +74,9 @@ export default function Vis() {
                   .text(d => d);
 
         const draft = new Draft();
-        const newEmphasis = new Emphasis(emphVar, emphVal);
+        const newEmphasis = new Emphasis("Aroma", "median");
 
-        draft.chart(ref.current)
+        draft.layer(ref.current)
                     .selection(scatterpoints)
                     .x("Aroma", xScale)
                     .y("Flavor", yScale)

@@ -8,7 +8,7 @@ const draft = useRef(new Draft());
 const newXThreshold = useRef(new Threshold("Aroma", xThreshold, "leq"));
 const newYThreshold = useRef(new Threshold("Flavor", yThreshold, "leq"));
 
-draft.current.chart(ref.current)
+draft.current.layer(ref.current)
             .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)

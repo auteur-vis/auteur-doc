@@ -10,7 +10,7 @@ const draft = new Draft();
 const newXRange = new Range("Aroma", [minXThreshold, maxXThreshold], "open");
 const newYRange = new Range("Flavor", [minYThreshold, maxYThreshold], "closed");
 
-draft.chart("#svg")
+draft.layer("#svg")
   .selection(scatterpoints)
   .x("Aroma", xScale)
   .y("Flavor", yScale)

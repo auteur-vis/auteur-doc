@@ -7,7 +7,7 @@ const lowerBound = new DerivedValues('AverageTemperature',
 
 const draft = new Draft();
 
-draft.chart(ref.current)
+draft.layer(ref.current)
 	.selection(lines)
 	.x("date", xScale)
 	.y("AverageTemperature", yScale)

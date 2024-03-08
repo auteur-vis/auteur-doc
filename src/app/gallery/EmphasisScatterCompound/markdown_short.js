@@ -11,7 +11,7 @@ const [emphCatVar, setEmphCatVar] = React.useState("Variety");
 const newEmphasis = useRef(new Emphasis(emphVar, emphVal));
 const newCatEmphasis = useRef(new Emphasis(emphCatVar, emphCatVal));
 
-draft.current.chart(ref.current)
+draft.current.layer(ref.current)
             .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)

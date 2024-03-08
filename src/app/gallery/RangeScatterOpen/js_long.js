@@ -90,8 +90,7 @@ export const Vis = () => {
             .attr("fill", "black")
             .text(d => d)
 
-  draft.chart("#svg")
-        .layer("#augmentations")
+  draft.layer("#svg")
         .selection(scatterpoints)
         .x("Aroma", xScale)
         .y("Flavor", yScale)

@@ -105,7 +105,7 @@ export default function Vis() {
 
         const draft = new Draft();
 
-        draft.chart(ref.current)
+        draft.layer(ref.current)
             .selection(groups)
             .x("country", xScale)
             .y("count", yScale)

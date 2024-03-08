@@ -98,7 +98,7 @@ export const Vis = () => {
 
     newYEmphasis.updateStyles(styles);
 
-    draft.chart("#svg")
+    draft.layer("#svg")
         .selection(lines)
         .x("date", xScale)
         .y("AverageTemperature", yScale)

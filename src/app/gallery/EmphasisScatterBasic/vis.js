@@ -7,9 +7,6 @@ import coffee from "../coffee.json";
 
 export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 
-	const [emphVal, setEmphVal] = React.useState("median");
-	const [emphVar, setEmphVar] = React.useState("Aroma");
-
 	const ref = useRef("emphVal");
 
 	const [data, setData] = React.useState(coffee);
@@ -87,11 +84,11 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 		const styles = {"text": {"text-anchor":"end", "x": 490, "y":alignY, "text": getText}};
 
 		const draft = new Draft();
-		const newEmphasis = new Emphasis(emphVar, emphVal);
+		const newEmphasis = new Emphasis("Aroma", "median");
 
 		newEmphasis.updateStyles(styles);
 
-		draft.chart(ref.current)
+		draft.layer(ref.current)
 					.selection(scatterpoints)
 					.x("Aroma", xScale)
 					.y("Flavor", yScale)

@@ -105,7 +105,7 @@ export default function Vis({size={"width":900, "height":500}, sparse=false}) {
 
 		newYThreshold.current.updateStyles(styles);
 
-		draft.current.chart(ref.current)
+		draft.current.layer(ref.current)
 					.selection(lines)
 					.x("date", xScale)
 					.y("AverageTemperature", yScale)

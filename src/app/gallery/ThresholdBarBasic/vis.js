@@ -78,7 +78,7 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 
 		let newAugs = newThreshold.getAugs();
 
-		draft.chart(ref.current)
+		draft.layer(ref.current)
 					.selection(bars)
 					.x("FIELD1", xScale)
 					.y("Flavor", yScale)

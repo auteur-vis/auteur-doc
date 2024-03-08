@@ -85,7 +85,7 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 
 		newYThreshold.current.updateStyles(styles);
 
-		draft.current.chart(ref.current)
+		draft.current.layer(ref.current)
 					.selection(scatterpoints)
 					.x("Flavor", xScale)
 					.y("Aroma", yScale)

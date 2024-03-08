@@ -239,10 +239,10 @@ export default function Documentation() {
         <p className={styles.sectionContent}>Only augmentations at the intersection of all provided generation criteria are applied (i.e. satisfies all generation criteria).</p>
         <p className={styles.sectionContent}>Usage: <br />
         <code className={styles.code}>
-            {`.union(generationCriterion)`}
+            {`.intersect(generationCriterion)`}
         </code> OR<br />
         <code className={styles.code}>
-            {`.union([generationCriterion, generationCriterion, ...])`}
+            {`.intersect([generationCriterion, generationCriterion, ...])`}
         </code>
         </p>
         <p className={styles.sectionContent}>Parameters:</p>
@@ -265,10 +265,10 @@ export default function Documentation() {
         <p className={styles.sectionContent}>The symmetric difference of augmentations for provided generation criteria (i.e. only augmentations that satisfy one of the provided generation criteria are applied).</p>
         <p className={styles.sectionContent}>Usage: <br />
         <code className={styles.code}>
-            {`.union(generationCriterion)`}
+            {`.symmdiff(generationCriterion)`}
         </code> OR<br />
         <code className={styles.code}>
-            {`.union([generationCriterion, generationCriterion, ...])`}
+            {`.symmdiff([generationCriterion, generationCriterion, ...])`}
         </code>
         </p>
         <p className={styles.sectionContent}>Parameters:</p>
@@ -652,9 +652,43 @@ export default function Documentation() {
         </TableContainer>
         <Divider className={styles.divider} />
 
+        <h2 className={styles.sectionSubHeader}>.chart(selector)</h2>
+        <p className={styles.sectionContent}>A css selector that defines the svg that contains all elements of the visualization.</p>
+        <p className={styles.sectionContent}>Usage: <br />
+        <code className={styles.code}>
+            {`.chart("svg")`}
+        </code><br />
+        <code className={styles.code}>
+            {`.chart("#{ID}")`}
+        </code>
+        </p>
+        <p className={styles.sectionContent}>Parameters:</p>
+        <TableContainer component={Paper} style={{ boxShadow:"none", borderRadius:"0px" }}>
+          <Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
+            <TableBody>
+                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <TableCell component="th" scope="row">
+                    selector
+                  </TableCell>
+                  <TableCell><b><i>str, default=None</i></b><br/>A css selector for an svg.</TableCell>
+                </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Divider className={styles.divider} />
+
         <h2 className={styles.sectionSubHeader}>.select(selector)</h2>
-        <p className={styles.sectionContent}>Defines the svg element(s) that should be selected for when applying the augmentations.
-        For example, encoding-type augmentations will only be applied to data items within the selection.</p>
+        <p className={styles.sectionContent}>A css selector that defines the svg element(s) that should be selected for when applying the augmentations.
+        For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.sectionContent}>.select()</code> or
+        <code className={styles.sectionContent}>.selection()</code> needs to be defined.</p>
+        <p className={styles.sectionContent}>Usage: <br />
+        <code className={styles.code}>
+            {`.select("circle")`}
+        </code><br />
+        <code className={styles.code}>
+            {`.select(".{CLASSNAME}")`}
+        </code>
+        </p>
         <p className={styles.sectionContent}>Parameters:</p>
         <TableContainer component={Paper} style={{ boxShadow:"none", borderRadius:"0px" }}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
@@ -671,9 +705,17 @@ export default function Documentation() {
         <Divider className={styles.divider} />
 
         <h2 className={styles.sectionSubHeader}>.selection(selection)</h2>
-        <p className={styles.sectionContent}>Similar to the previous method, this method defines the svg element(s)
-        that should be selected for when applying the augmentations.
-        For example, encoding-type augmentations will only be applied to data items within the selection.</p>
+        <p className={styles.sectionContent}>A d3 selection that defines the svg element(s) that should be selected for when applying the augmentations.
+        For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.sectionContent}>.select()</code> or
+        <code className={styles.sectionContent}>.selection()</code> needs to be defined.</p>
+        <p className={styles.sectionContent}>Usage: <br />
+        <code className={styles.code}>
+            {`.selection(d3.selectAll("circle"))`}
+        </code><br />
+        <code className={styles.code}>
+            {`.selection(d3.selectAll(".{CLASSNAME}"))`}
+        </code>
+        </p>
         <p className={styles.sectionContent}>Parameters:</p>
         <TableContainer component={Paper} style={{ boxShadow:"none", borderRadius:"0px" }}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
@@ -689,8 +731,8 @@ export default function Documentation() {
         </TableContainer>
         <Divider className={styles.divider} />
 
-        <h2 className={styles.sectionSubHeader}>.x(variable, scaleX)</h2>
-        <p className={styles.sectionContent}>Defines the <i>x</i>-axis of the chart.</p>
+        <h2 className={styles.sectionSubHeader}>.x(variable, scaleX) (optional)</h2>
+        <p className={styles.sectionContent}>Defines the <i>x</i>-axis of the chart. If this is not provided, some mark-type augmentations will not be rendered.</p>
         <p className={styles.sectionContent}>Parameters:</p>
         <TableContainer component={Paper} style={{ boxShadow:"none", borderRadius:"0px" }}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
@@ -712,8 +754,8 @@ export default function Documentation() {
         </TableContainer>
         <Divider className={styles.divider} />
 
-        <h2 className={styles.sectionSubHeader}>.y(variable, scaleY)</h2>
-        <p className={styles.sectionContent}>Defines the <i>y</i>-axis of the chart.</p>
+        <h2 className={styles.sectionSubHeader}>.y(variable, scaleY) (optional)</h2>
+        <p className={styles.sectionContent}>Defines the <i>y</i>-axis of the chart. If this is not provided, some mark-type augmentations will not be rendered.</p>
         <p className={styles.sectionContent}>Parameters:</p>
         <TableContainer component={Paper} style={{ boxShadow:"none", borderRadius:"0px" }}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
@@ -735,7 +777,7 @@ export default function Documentation() {
         </TableContainer>
         <Divider className={styles.divider} />
 
-        <h2 className={styles.sectionSubHeader}>.include(inclusions)</h2>
+        <h2 className={styles.sectionSubHeader}>.include(inclusions) (optional)</h2>
         <p className={styles.sectionContent}>Defines the augmentations to apply to the chart. Cannot be used with <code className={styles.code}>.exclude()</code>.</p>
         <p className={styles.sectionContent}>Usage: <br />
         <code className={styles.code}>
@@ -758,7 +800,7 @@ export default function Documentation() {
                   </TableCell>
                   <TableCell><b><i>object, default=None</i></b><br/>
                     Can contain an object mapped to an array of the type(s) of augmentations to include and/or an array of the name(s) of the augmentations to include.
-                    Augmentation names are exactly identical to the <u><a href="#Augmentations">documentation</a></u> above.
+                    Augmentation names are exactly identical to the <u><a href="#Augmentations">documentation</a></u>.
                   </TableCell>
                 </TableRow>
             </TableBody>
@@ -767,7 +809,7 @@ export default function Documentation() {
 
         <Divider className={styles.divider} />
 
-        <h2 className={styles.sectionSubHeader}>.exclude(exclusions)</h2>
+        <h2 className={styles.sectionSubHeader}>.exclude(exclusions) (optional)</h2>
         <p className={styles.sectionContent}>Defines the augmentations to exclude when applying augmentations to the chart.
         Cannot be used with <code className={styles.code}>.include()</code>.</p>
         <p className={styles.sectionContent}>Usage: <br />
@@ -791,7 +833,7 @@ export default function Documentation() {
                   </TableCell>
                   <TableCell><b><i>object, default=None</i></b><br/>
                     Can contain an object mapped to an array of the type(s) of augmentations to exclude and/or an array of the name(s) of the augmentations to exclude.
-                    Augmentation names are exactly identical to the <a href="#Augmentations">documentation</a> above.
+                    Augmentation names are exactly identical to the <u><a href="#Augmentations">documentation</a></u>.
                   </TableCell>
                 </TableRow>
             </TableBody>
@@ -811,7 +853,7 @@ export default function Documentation() {
                     augmentations
                   </TableCell>
                   <TableCell><b><i>array, default=None</i></b><br/>
-                    Typically obtained by calling the <code className={styles.code}>.getAugs()</code> function after specifying a generation criterion.
+                    Obtained by calling the <code className={styles.code}>.getAugs()</code> function after specifying a generation criterion.
                     Can also be obtained by creating a compound generation criterion.
                   </TableCell>
                 </TableRow>

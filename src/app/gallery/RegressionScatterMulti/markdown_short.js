@@ -3,7 +3,7 @@ export const markdown_short = `import { Draft, Regression } from "auteur";
 const draft = useRef(new Draft());
 const mainRegression = useRef(new Regression());
 
-draft.current.chart(ref.current)
+draft.current.layer(ref.current)
             .selection(scatterpoints)
             .x("sepalLength", xScale)
             .y("petalLength", yScale)

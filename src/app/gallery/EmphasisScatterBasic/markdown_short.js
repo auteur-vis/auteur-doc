@@ -1,11 +1,11 @@
 export const markdown_short = `import { Draft, Emphasis } from "auteur";
 
 const draft = new Draft();
-const newEmphasis = new Emphasis(emphVar, emphVal);
+const newEmphasis = new Emphasis("Aroma", "median");
 
-draft.chart(ref.current)
-            .selection(scatterpoints)
-            .x("Aroma", xScale)
-            .y("Flavor", yScale)
-            .exclude({"name":["label"]})
-            .augment(newEmphasis.getAugs());`
+draft.layer(ref.current)
+        .selection(scatterpoints)
+        .x("Aroma", xScale)
+        .y("Flavor", yScale)
+        .exclude({"name":["label"]})
+        .augment(newEmphasis.getAugs());`

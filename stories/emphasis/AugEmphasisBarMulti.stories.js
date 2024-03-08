@@ -128,8 +128,6 @@ export const Multi = () => {
 
 	useEffect(() => {
 
-		
-
 		function alignY(d, i) {
 			return yScale(d["Flavor"])
 		}
