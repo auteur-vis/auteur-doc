@@ -30,7 +30,8 @@ export default function ThresholdSunburstBasic() {
 								js_long={js_long}
 								js_short={js_short}
 								markdown_long={markdown_long}
-								markdown_short={markdown_short} />
+								markdown_short={markdown_short}
+								data_link={"https://raw.githubusercontent.com/auteur-vis/auteur-doc/main/public/hierarchy.json"} />
 				</div>
 			</div>
 		</main>

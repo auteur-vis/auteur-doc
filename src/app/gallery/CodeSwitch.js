@@ -8,7 +8,7 @@ import CodePlain from "./CodePlain";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-export default function CodeSwitch({markdown_short="", markdown_long="", html="", js_long="", js_short=""}) {
+export default function CodeSwitch({markdown_short="", markdown_long="", html="", js_long="", js_short="", data_link=""}) {
   const [selection, setSelection] = React.useState('react');
 
   function handleChange() {
@@ -33,8 +33,8 @@ export default function CodeSwitch({markdown_short="", markdown_long="", html=""
 	      <ToggleButton value="react">React</ToggleButton>
 	    </ToggleButtonGroup>
 	    {selection === "react"
-	    	? <Code markdown_short={markdown_short} markdown_long={markdown_long} />
-	    	: <CodePlain html={html} js_long={js_long} js_short={js_short} />}
+	    	? <Code markdown_short={markdown_short} markdown_long={markdown_long} data_link={data_link} />
+	    	: <CodePlain html={html} js_long={js_long} js_short={js_short} data_link={data_link} />}
     </div>
   );
 }

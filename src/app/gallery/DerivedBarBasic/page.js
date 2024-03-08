@@ -30,7 +30,8 @@ export default function DerivedBarBasic() {
 								js_long={js_long}
 								js_short={js_short}
 								markdown_long={markdown_long}
-								markdown_short={markdown_short} />
+								markdown_short={markdown_short}
+								data_link="https://raw.githubusercontent.com/auteur-vis/auteur-doc/main/public/arabica_data_cleaned_top15.json" />
 				</div>
 			</div>
 		</main>
