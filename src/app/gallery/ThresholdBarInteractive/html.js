@@ -6,7 +6,8 @@ export const html = `<div>
             id="selectQuantity"
             name="quantity"
             min="0" max="236"
-            value="150" />
+            value="150">
+        </input>
     </div>
     <div>
         <p>y-axis operation: </p>
@@ -19,9 +20,9 @@ export const html = `<div>
         </select>
     </div>
     <svg id="svg">
-        <g id="mark" />
-        <g id="xAxis" />
-        <g id="yAxis" />
+        <g id="mark"></g>
+        <g id="xAxis"></g>
+        <g id="yAxis"></g>
     </svg>
 </div>
 `

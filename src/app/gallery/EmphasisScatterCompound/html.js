@@ -19,15 +19,16 @@ export const html = `<div>
             name="quantity"
             min="0" max="10"
             step="0.01"
-            value="6" />
+            value="6">
+        </input>
         <p>and when Variety is: </p>
         <select id="selectVariety">
         </select>
     </div>
     <svg id="svg">
-        <g id="mark" />
-        <g id="xAxis" />
-        <g id="yAxis" />
+        <g id="mark"></g>
+        <g id="xAxis"></g>
+        <g id="yAxis"></g>
     </svg>
 </div>
 `

@@ -659,8 +659,8 @@ export default function Documentation() {
 
         <h2 className={styles.sectionSubHeader}>.select(selector)</h2>
         <p className={styles.sectionContent}>A css selector that defines the svg element(s) that should be considered when applying the augmentations.
-        For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.sectionContent}>.select()</code> or
-        <code className={styles.sectionContent}>.selection()</code> needs to be defined.</p>
+        For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.code}>.select()</code> or
+        <code className={styles.code}>.selection()</code> needs to be defined.</p>
         <p className={styles.sectionContent}>Usage: <br />
         <code className={styles.code}>
             {`.select("circle")`}
@@ -686,8 +686,8 @@ export default function Documentation() {
 
         <h2 className={styles.sectionSubHeader}>.selection(selection)</h2>
         <p className={styles.sectionContent}>A d3 selection that defines the svg element(s) that should be considered when applying the augmentations.
-        For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.sectionContent}>.select()</code> or
-        <code className={styles.sectionContent}>.selection()</code> needs to be defined.</p>
+        For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.code}>.select()</code> or
+        <code className={styles.code}>.selection()</code> needs to be defined.</p>
         <p className={styles.sectionContent}>Usage: <br />
         <code className={styles.code}>
             {`.selection(d3.selectAll("circle"))`}

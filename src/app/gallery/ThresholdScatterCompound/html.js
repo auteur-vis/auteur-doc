@@ -7,7 +7,8 @@ export const html = `<div>
           name="quantity"
           min="7.9" max="8.7"
           step="0.01"
-          value="8.3" />
+          value="8.3">
+        </input>
     </div>
     <div>
         <p>y-axis threshold: </p>
@@ -17,7 +18,8 @@ export const html = `<div>
           name="quantity"
           min="8.2" max="8.9"
           step="0.01"
-          value="8.55" />
+          value="8.55">
+        </input>
     </div>
     <div>
         <p>merge by: </p>
@@ -28,9 +30,9 @@ export const html = `<div>
         </select>
     </div>
     <svg id="svg">
-        <g id="mark" />
-        <g id="xAxis" />
-        <g id="yAxis" />
+        <g id="mark"></g>
+        <g id="xAxis"></g>
+        <g id="yAxis"></g>
     </svg>
 </div>
 `

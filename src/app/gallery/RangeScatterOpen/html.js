@@ -8,7 +8,8 @@ export const html = `<div>
         min=6
         max=8.5
         step="0.01"
-        value="6.5" />
+        value="6.5">
+      </input>
     </div>
     <div>
       <p>max threshold: </p>
@@ -19,13 +20,14 @@ export const html = `<div>
         min=6
         max=8.5
         step="0.01"
-        value="8" />
+        value="8">
+      </input>
     </div>
     <svg id="svg">
-        <g id="augmentations" />
-        <g id="mark" />
-        <g id="xAxis" />
-        <g id="yAxis" />
+        <g id="augmentations"></g>
+        <g id="mark"></g>
+        <g id="xAxis"></g>
+        <g id="yAxis"></g>
     </svg>
 </div>
 `
