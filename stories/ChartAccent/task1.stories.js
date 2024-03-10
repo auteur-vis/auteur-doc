@@ -168,7 +168,7 @@ export const Task1 = () => {
 							.attr("cursor", "pointer")
 							.on("click", clicked);
 
-		draft.current.chart("#svg")
+		draft.current.layer(ref.current)
 			.selection(scatterpoints)
 			.x("month", xScale)
 			.y("temperature", yScale)

@@ -103,7 +103,8 @@ export const Task3 = () => {
 		const range3 = new Range(" PM2_5", [300, 450], "closed", style3);
 
 		const draft = new Draft();
-		draft.chart("#svg")
+
+		draft.layer(ref.current)
 			.selection(lines)
 			.x("Day", xScale)
 			.y(" PM2_5", yScale)

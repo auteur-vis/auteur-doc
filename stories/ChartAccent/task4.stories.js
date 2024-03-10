@@ -35,8 +35,6 @@ export const Task4 = () => {
 	   		   "marginBottom":50,
 	   		   "marginLeft":50};
 
-	const draft = useRef(new Draft());
-
 	useEffect(() => {
 
 		let svgElement = d3.select(ref.current);
@@ -124,6 +122,8 @@ export const Task4 = () => {
 							.attr("opacity", 0.25)
 							.attr('fill', d => colorScale(d.Cylinders));
 
+		let draft = new Draft()
+
 		const regression1 = new Regression();
 		const regression2 = new Regression();
 		const regression3 = new Regression();
@@ -136,7 +136,7 @@ export const Task4 = () => {
 		regression2.updateStyles({"regression":{"stroke":colorScale("5-6 Cyl.")}});
 		regression3.updateStyles({"regression":{"stroke":colorScale("3-4 Cyl.")}});
 
-		draft.current.chart("#svg")
+		draft.layer(ref.current)
 			.selection(scatterpoints)
 			.x("MPG", xScale)
 			.y("Displacement", yScale)

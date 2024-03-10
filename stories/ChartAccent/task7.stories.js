@@ -1,22 +1,22 @@
 import React, {useRef, useState, useEffect} from "react";
 import * as d3 from "d3";
 
-import Draft from "../../../auteur/src/lib/Draft.js";
-import Emphasis from "../../../auteur/src/lib/Emphasis.js";
+import { Draft, Threshold, Emphasis } from "auteur";
 
 // data from https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data
 import temperature from "../../public/chartaccent_temperature.json";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Aug/ChartAccent/Task2',
+  title: 'Aug/ChartAccent/Task7',
 };
 
-export const Task2 = () => {
+export const Task7 = () => {
 
-	const ref = useRef("task2");
+	const ref = useRef("task7");
 
-	const cities = ["Philadelphia"];
+	const cities = ["NewYork", "Charlotte", "Seattle"];
+
 	const [data, setData] = React.useState(temperature);
 
 	let layout={"width":600,
@@ -30,13 +30,6 @@ export const Task2 = () => {
 
 		let svgElement = d3.select(ref.current);
 
-		// create a tooltip
-		var tooltip = svgElement.select("#tooltip")
-						.attr("text-anchor", "middle")
-						.attr("font-family", "sans-serif")
-						.attr("font-size", 10)
-					    .attr("opacity", 0);
-
 		svgElement.attr("width", layout.width)
 				.attr("height", layout.height);
 
@@ -44,14 +37,16 @@ export const Task2 = () => {
 					.domain(data.map(d => d["Month"]))
 					.range([layout.marginLeft, layout.width - layout.marginRight]);
 
+		let padding = 5;
+		let bandwidth = (xScale.bandwidth() - padding * 2) / 3;
+
 		let yScale = d3.scaleLinear()
-					.domain([0, d3.max(data, d => d.Philadelphia)])
+					.domain([0, 100])
 					.range([layout.height - layout.marginBottom, layout.marginTop]);
 
-		let colorScale = d3.scaleOrdinal(d3.schemePastel2)
-							.domain(cities);
-
-		let lineFunctions = {};
+		let colorScale = d3.scaleOrdinal()
+							.domain(cities)
+							.range(["#4d9be3", "#9cc957" , "#fa962a"]);
 
 		svgElement.select("#xAxis")
 				  .call(d3.axisBottom(xScale))
@@ -87,7 +82,7 @@ export const Task2 = () => {
 							.attr("cx", (d, i) => layout.width - 100)
 							.attr("cy", (d, i) => layout.marginTop + 16 * i)
 							.attr("r", 5)
-							.attr("fill", d => colorScale(d))
+							.attr("fill", d => colorScale(d));
 
 		let legendText = svgElement.select("#legend")
 							.selectAll(".legendText")
@@ -100,44 +95,52 @@ export const Task2 = () => {
 							.attr("text-anchor", "start")
 							.attr("font-family", "sans-serif")
 							.attr("font-size", "10")
-							.text(d => d)
+							.text(d => d);
 
-		let firstHalf = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
-
-		let bars = svgElement.select("#mark")
-							.selectAll(".climateBar")
+		let NYBars = svgElement.select("#mark")
+							.selectAll(".temperatureNY")
 							.data(data)
 							.join("rect")
-							.attr("class", d => `climateBar ${firstHalf.indexOf(d.Month) < 0 ? "second" : "first"}`)
-							.attr("x", d => xScale(d["Month"]) + 1)
-							.attr("y", d => yScale(d["Philadelphia"]))
-							.attr("width", xScale.bandwidth() - 2)
-							.attr("height", d => yScale(0) - yScale(d["Philadelphia"]))
-							.attr('fill', '#a9cfd6');
+							.attr("class", "temperatureNY")
+							.attr('fill', d => colorScale("NewYork"))
+							.attr("x", d => xScale(d.Month) + padding)
+							.attr("y", d => yScale(d["NewYork"]))
+							.attr("width", bandwidth)
+							.attr("height", d => yScale(0) - yScale(d["NewYork"]))
+							.attr("opacity", 0.25)
 
-		svgElement.select("#augs")
-			.attr("transform", `translate(${xScale.bandwidth() / 2}, 0)`);
+		let CharlotteBars = svgElement.select("#mark")
+							.selectAll(".temperatureCharlotte")
+							.data(data)
+							.join("rect")
+							.attr("class", "temperatureCharlotte mytemp")
+							.attr('fill', d => colorScale("Charlotte"))
+							.attr("x", d => xScale(d.Month) + bandwidth + padding)
+							.attr("y", d => yScale(d["Charlotte"]))
+							.attr("width", bandwidth)
+							.attr("height", d => yScale(0) - yScale(d["Charlotte"]))
 
-		const emph1 = new Emphasis("Month",
-			["Jan", "Feb", "Mar", "Apr", "May", "Jun"]);
-		const emph2 = new Emphasis("Month",
-			["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
+		let SeattleBars = svgElement.select("#mark")
+							.selectAll(".temperatureSeattle")
+							.data(data)
+							.join("rect")
+							.attr("class", "temperatureSeattle mytemp")
+							.attr('fill', d => colorScale("Seattle"))
+							.attr("x", d => xScale(d.Month) + bandwidth * 2 + padding)
+							.attr("y", d => yScale(d["Seattle"]))
+							.attr("width", bandwidth)
+							.attr("height", d => yScale(0) - yScale(d["Seattle"]));
 
-		let style1 = {"regression":{"stroke":"red"}, "label":{"text":(d) => d.Philadelphia}};
-		let style2 = {"regression":{"stroke":"green"}, "label":{"text":(d) => d.Philadelphia}};
+		let draft = new Draft();
 
-		emph1.updateStyles(style1);
-		emph2.updateStyles(style2);
+		let newThreshold = new Threshold("NewYork", "mean", "geq");
 
-		const draft = new Draft();
-
-		draft.layer("#augs")
-			.selection(bars)
+		draft.layer(ref.current)
+			.selection(svgElement.selectAll(".mytemp"))
 			.x("Month", xScale)
-			.y("Philadelphia", yScale)
-			.include({"name":["regression", "label"]})
-			.augment(emph1.getAugs())
-			.augment(emph2.getAugs());
+			.y("NewYork", yScale)
+			.include({"name":["opacity", "stroke", "line", "text"]})
+			.augment(newThreshold.getAugs());
 
 	}, [data])
 
@@ -147,14 +150,12 @@ export const Task2 = () => {
 				<g id="mark" />
 				<g id="xAxis" />
 				<g id="yAxis" />
-				<g id="augs" />
 				<g id="legend" />
-				<text id="tooltip" />
 			</svg>
 		</div>
 	)
 }
 
-Task2.story = {
-  name: 'Task2',
+Task7.story = {
+  name: 'Task7',
 };

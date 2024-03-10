@@ -25,8 +25,6 @@ export const Task6 = () => {
 	   		   "marginBottom":50,
 	   		   "marginLeft":50};
 
-	const draft = useRef(new Draft());
-
 	useEffect(() => {
 
 		let svgElement = d3.select(ref.current);
@@ -88,9 +86,11 @@ export const Task6 = () => {
 							.attr("r", 3)
 							.attr('fill', "steelblue");
 
+		let draft = new Draft()
+
 		const threshold = new Threshold("MPG", "mean", "geq");
 
-		draft.current.chart("#svg")
+		draft.layer(ref.current)
 			.selection(scatterpoints)
 			.x("MPG", xScale)
 			.y("Displacement", yScale)

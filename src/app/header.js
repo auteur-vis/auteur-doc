@@ -1,5 +1,7 @@
 "use client"; // This is a client component
 
+import { Sedgwick_Ave_Display } from "next/font/google";
+
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,7 +16,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-import Link from 'next/link'
+import Link from 'next/link';
+
+const sedgwickavedisplay = Sedgwick_Ave_Display({ weight: '400', subsets: ["latin"] });
 
 function ResponsiveAppBar({selected="Getting Started", setSelection}) {
 
@@ -51,7 +55,7 @@ function ResponsiveAppBar({selected="Getting Started", setSelection}) {
               textDecoration: 'none',
             }}
           >
-            AUTEUR <span style={{"fontSize":"12px"}}>v0.1.6</span>
+            <span style={{fontFamily: `${sedgwickavedisplay.style.fontFamily}`, fontSize:"1.2em"}}>A</span>UTEUR <span style={{"fontSize":"12px"}}>v0.1.6</span>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -107,7 +111,7 @@ function ResponsiveAppBar({selected="Getting Started", setSelection}) {
               textDecoration: 'none',
             }}
           >
-            AUTEUR <span style={{"fontSize":"12px"}}>v0.1.6</span>
+            <span style={{fontFamily: `${sedgwickavedisplay.style.fontFamily}`, fontSize:"1.2em"}}>A</span>UTEUR <span style={{"fontSize":"12px"}}>v0.1.6</span>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

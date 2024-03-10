@@ -23,8 +23,6 @@ export const Task5 = () => {
 	   		   "marginBottom":50,
 	   		   "marginLeft":50};
 
-	const draft = useRef(new Draft());
-
 	const [data, setData] = useState(gapminder);
 
 	useEffect(() => {
@@ -117,6 +115,8 @@ export const Task5 = () => {
 							.attr("r", d => sizeScale(d.Population))
 							.attr('fill', d => colorScale(d.Region));
 
+		let draft = new Draft();
+
 		const emph1 = new Emphasis("Region", "Sub-Saharan Africa");
 		const emph2 = new Emphasis("Country",
 			["Hong Kong, China", "Afghanistan", "Sweden", "Greece"]);
@@ -124,7 +124,7 @@ export const Task5 = () => {
 		emph1.include({"name":["stroke", "opacity"]});
 		emph2.include({"name":["stroke", "opacity", "label"]});
 
-		draft.current.chart("#svg")
+		draft.layer(ref.current)
 			.selection(scatterpoints)
 			.x("FertilityRate", xScale)
 			.y("LifeExpectancy", yScale)

@@ -636,7 +636,7 @@ export default function Documentation() {
         <p className={styles.sectionContent}>Usage: <code className={styles.code}>new Draft()</code></p>
 
         <h2 className={styles.sectionSubHeader}>.layer(selector)</h2>
-        <p className={styles.sectionContent}>Defines the DOM element to which mark type augmentations will be added. Typically, this is the top-level svg element, but it can also be a g container.</p>
+        <p className={styles.sectionContent}>Defines the DOM element to which mark type augmentations will be added. Typically, this is the top-level <code className={styles.code}>&lt;svg&gt;</code> element, but it can also be a <code className={styles.code}>&lt;g&gt;</code> container.</p>
         <p className={styles.sectionContent}>Usage: <br />
         <code className={styles.code}>
             {`.layer("svg")`}
