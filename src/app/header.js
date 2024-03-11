@@ -1,5 +1,7 @@
 "use client"; // This is a client component
 
+import localFont from 'next/font/local';
+
 import { Sedgwick_Ave_Display } from "next/font/google";
 
 import * as React from 'react';
@@ -19,6 +21,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Link from 'next/link';
 
 const sedgwickavedisplay = Sedgwick_Ave_Display({ weight: '400', subsets: ["latin"] });
+
+// Font files can be colocated inside of `pages`
+const menlo = localFont({ src: './menlo_bold.woff' });
 
 function ResponsiveAppBar({selected="Getting Started", setSelection}) {
 
@@ -55,7 +60,7 @@ function ResponsiveAppBar({selected="Getting Started", setSelection}) {
               textDecoration: 'none',
             }}
           >
-            <span style={{fontFamily: `${sedgwickavedisplay.style.fontFamily}`, fontSize:"1.2em"}}>A</span>UTEUR <span style={{"fontSize":"12px"}}>v0.1.6</span>
+            <span style={{fontFamily: `${sedgwickavedisplay.style.fontFamily}`, fontSize:"1.2em"}}>A</span><span className={menlo.className}>UTEUR</span> <span style={{"fontSize":"12px"}}>v0.1.6</span>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -111,7 +116,7 @@ function ResponsiveAppBar({selected="Getting Started", setSelection}) {
               textDecoration: 'none',
             }}
           >
-            <span style={{fontFamily: `${sedgwickavedisplay.style.fontFamily}`, fontSize:"1.2em"}}>A</span>UTEUR <span style={{"fontSize":"12px"}}>v0.1.6</span>
+            <span style={{fontFamily: `${sedgwickavedisplay.style.fontFamily}`, fontSize:"1.2em"}}>A</span><span className={menlo.className}>UTEUR</span> <span style={{"fontSize":"12px"}}>v0.1.6</span>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

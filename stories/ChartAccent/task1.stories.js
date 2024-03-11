@@ -35,14 +35,16 @@ export const Task1 = () => {
 
 	const [data, setData] = React.useState(flatten);
 
-	let layout={"width":600,
-	   		   "height":350,
+	let layout={"width":1200,
+	   		   "height":700,
 	   		   "marginTop":50,
 	   		   "marginRight":50,
 	   		   "marginBottom":50,
 	   		   "marginLeft":50};
 
 	useEffect(() => {
+
+		let selectedIndices = [5, 6, 19, 27];
 
 		let svgElement = d3.select(ref.current);
 
@@ -139,37 +141,20 @@ export const Task1 = () => {
 								return lineFunction(d)
 							});
 
-		function clicked(e, d) {
-
-			let selected = d3.select(this);
-
-			if (selected.classed("selected")) {
-				selected.attr("class", "climatePoints")
-			} else {
-				selected.attr("class", "climatePoints selected")
-			}
-
-			emph.current.select(".selected");
-			draft.current.augment(emph.current.getAugs());
-
-		}
-
 		let scatterpoints = svgElement.select("#mark")
 							.selectAll(".climatePoints")
 							.data(data)
 							.join("circle")
-							.attr("class", "climatePoints")
+							.attr("class", (d, i) => selectedIndices.indexOf(i) >= 0 ? "climatePoints selected" : "climatePoints")
 							.attr("id", (d, i) => i)
 							.attr("cx", d => xScale(d.month))
 							.attr("cy", d => yScale(d.temperature))
 							.attr("r", 3)
 							.attr("fill",  d => colorScale(d.city))
-							.attr("stroke", d => colorScale(d.city))
-							.attr("cursor", "pointer")
-							.on("click", clicked);
+							.attr("stroke", d => colorScale(d.city));
 
 		draft.current.layer(ref.current)
-			.selection(scatterpoints)
+			.selection(svgElement.selectAll(".selected"))
 			.x("month", xScale)
 			.y("temperature", yScale)
 			.include({"name":["stroke", "label"]})
@@ -179,7 +164,6 @@ export const Task1 = () => {
 
 	return (
 		<div>
-			<p style={{"font-family":"sans-serif"}}>Click to select points to emphasize:</p>
 			<svg id="svg" ref={ref}>
 				<g id="mark" />
 				<g id="xAxis" />
