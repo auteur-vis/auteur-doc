@@ -239,7 +239,6 @@ export default function Documentation() {
             </TableBody>
           </Table>
         </TableContainer>
-        <Divider className={styles.divider} />
 
         <h2 className={styles.sectionSubHeader}>.selection(selection)</h2>
         <p className={styles.sectionContent}>A d3 selection that defines the svg element(s) that should be considered when applying the augmentations.
