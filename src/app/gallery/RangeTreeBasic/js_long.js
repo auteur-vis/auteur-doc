@@ -100,8 +100,9 @@ export const Vis = () => {
     .attr("y", (d, i, nodes) => ${"`"}${"$"}{(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em${"`"})
     .text(d => d);
 
+  newRange.selection(leafRects);
+
   chart.layer("#svg")
-        .selection(leafRects)
         .exclude({"name":["fill"]})
         .augment(newRange.getAugs());
 

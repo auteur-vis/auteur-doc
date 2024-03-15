@@ -7,12 +7,13 @@ let maxThreshold = 8.5;
 let minThreshold = 8;
 let newRange = new Range("Flavor", [minThreshold, maxThreshold], "closed", style);
 
+newRange.selection(bars);
+
 let newAugs = newRange.getAugs();
 
 const draft = new Draft();
 
 draft.layer("#svg")
-  .selection(bars)
   .x("FIELD1", xScale)
   .y("Flavor", yScale)
   .exclude({"name":["label", "regression", "text"]})

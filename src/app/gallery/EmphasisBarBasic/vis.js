@@ -25,7 +25,7 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 
 	let yScale;
 	
-	function updatePlot() {
+	useEffect(() => {
 
 		let svgElement = d3.select(ref.current);
 
@@ -87,13 +87,10 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 				  .text(d => d);
 
 		draft.current.layer(ref.current)
-					.selection(bars)
 					.x("FIELD1", xScale)
 					.y("Flavor", yScale)
 					.exclude({"name":["label"]});
-	}
 
-	useEffect(() => {
 		function alignY(d, i) {
 			return yScale(d["Flavor"])
 		}
@@ -103,8 +100,8 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 		}
 		
 		const styles = {"text": {"text-anchor":"end", "x": 490, "y":alignY, "text": getText}};
-		updatePlot();
-		newEmphasis.current.updateStyles(styles);
+
+		newEmphasis.current.selection(bars).updateStyles(styles);
 
 		if (sparse) {
 			draft.current.augment(newEmphasis.current.getAugs());

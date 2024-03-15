@@ -8,8 +8,9 @@ const style = {"rect":{"fill":"#edcf7b", "opacity": 0.2}};
 const draft = new Draft();
 const newRange = new Range("Aroma", [minThreshold, maxThreshold], "open", style);
 
+newRange.selection(scatterpoints);
+
 draft.layer("#svg")
-    .selection(scatterpoints)
     .x("Aroma", xScale)
     .y("Flavor", yScale)
     .exclude({"name":["regression", "label", "text"]})

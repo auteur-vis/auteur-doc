@@ -5,6 +5,8 @@ let minThreshold = -5;
 
 const newRange = new Range("AverageTemperature", [minThreshold, maxThreshold], "closed");
 
+newRange.selection(lines);
+
 const draft = new Draft();
 
 draft.layer("#svg")

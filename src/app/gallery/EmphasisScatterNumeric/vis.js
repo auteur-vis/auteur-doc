@@ -90,10 +90,9 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 
 		const styles = {"text": {"text-anchor":"end", "x": 490, "y":alignY, "text": getText}};
 
-		newEmphasis.current.updateStyles(styles);
+		newEmphasis.current.selection(scatterpoints).updateStyles(styles);
 
 		draft.current.layer(ref.current)
-					.selection(scatterpoints)
 					.x("Aroma", xScale)
 					.y("Flavor", yScale)
 					.exclude({"name":["label", "regression"]});

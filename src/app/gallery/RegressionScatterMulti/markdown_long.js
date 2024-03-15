@@ -76,8 +76,9 @@ export default function Vis() {
                   .attr("fill", "black")
                   .text(d => d);
 
+        mainRegression.current.selection(scatterpoints);
+
         draft.current.layer(ref.current)
-                    .selection(scatterpoints)
                     .x("sepalLength", xScale)
                     .y("petalLength", yScale)
                     .exclude({"name":["text"]})

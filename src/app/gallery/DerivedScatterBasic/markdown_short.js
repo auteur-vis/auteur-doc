@@ -12,8 +12,8 @@ let newStyle = {"line":{"x1":alignX, "x2":alignX, "stroke-dasharray":"2px 5px 5p
 newDerivedValues.updateStyles(newStyle);
 
 draft.layer(ref.current)
-            .selection(scatterpoints)
-            .x("Aroma", xScale)
-            .y("Flavor", yScale)
-            .augment(newDerivedValues.getAugs());
+    .selection(scatterpoints)
+    .x("Aroma", xScale)
+    .y("Flavor", yScale)
+    .augment(newDerivedValues.getAugs());
 `

@@ -14,7 +14,7 @@ const styles = {"mark": {"fill":"none", "stroke": "red", "r": (d, i) => sizeScal
 newLocal.current.updateStyles(styles);
 
 draft.current.layer(ref.current)
-            .selection(scatterpoints)
+			.selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)
             .exclude()

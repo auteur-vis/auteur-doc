@@ -89,7 +89,7 @@ export const Sunburst = () => {
 			  .attr("dy", "0.35em")
 			  .text(d => d.data.name);
 
-		chart.current.chart(ref.current)
+		chart.current.layer(ref.current)
 					.selection(arcs)
 					.exclude({"name":["fill"]})
 					.augment(newRange.current.getAugs());

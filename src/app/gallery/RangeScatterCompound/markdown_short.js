@@ -10,8 +10,10 @@ const draft = useRef(new Draft());
 const newXRange = useRef(new Range("Aroma", [minXThreshold, maxXThreshold], "open"));
 const newYRange = useRef(new Range("Flavor", [minYThreshold, maxYThreshold], "closed"));
 
+newXRange.current.selection(scatterpoints);
+newYRange.current.selection(scatterpoints);
+
 draft.current.layer(ref.current)
-            .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)
             .exclude({"name":["regression", "label", "text"]})

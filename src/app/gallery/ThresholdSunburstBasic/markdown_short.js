@@ -5,8 +5,9 @@ const chart = useRef(new Draft());
 const [threshold, setThreshold] = useState(150000);
 const newThreshold = useRef(new Threshold("value", threshold, "geq"));
 
+newThreshold.current.selection(arcs);
+
 chart.current.layer(ref.current)
-		.selection(arcs)
 		.exclude({"name":["fill"]})
 		.augment(newThreshold.current.getAugs());
 `

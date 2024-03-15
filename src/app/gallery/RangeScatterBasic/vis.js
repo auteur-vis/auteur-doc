@@ -81,11 +81,10 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 		const styles = {"fill": {
 			"fill": d => colorScale(d.Aroma) }};
 
-		range.updateStyles(styles);
+		range.selection(scatterpoints).updateStyles(styles);
 
 		const draft = new Draft();
 		draft.layer(ref.current)
-			.selection(scatterpoints)
 			.x("Aroma", xScale)
 			.y("Flavor", yScale)
 			.include({"name":["rect", "fill", "stroke"]})

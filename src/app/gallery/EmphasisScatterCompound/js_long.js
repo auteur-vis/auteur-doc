@@ -108,8 +108,10 @@ export const Vis = () => {
               .attr("fill", "black")
               .text(d => d);
 
+    newEmphasis.selection(scatterpoints);
+    newCatEmphasis.selection(scatterpoints);
+
     draft.layer("#svg")
-        .selection(scatterpoints)
         .x("Aroma", xScale)
         .y("Flavor", yScale)
         .exclude({"name":["label", "regression"]})

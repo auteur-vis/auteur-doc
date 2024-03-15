@@ -86,10 +86,9 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 
 		const styles = {"text": {"text-anchor":"end", "x": 490, "y":alignY, "text": getText}};
 
-		mainRegression.current.updateStyles(styles);
+		mainRegression.current.selection(scatterpoints).updateStyles(styles);
 
 		draft.current.layer(ref.current)
-					.selection(scatterpoints)
 					.x("sepalLength", xScale)
 					.y("petalLength", yScale)
 					.exclude({"name":["text"]})

@@ -8,8 +8,10 @@ const draft = new Draft();
 const newXThreshold = new Threshold("Aroma", xThreshold, "leq");
 const newYThreshold = new Threshold("Flavor", yThreshold, "leq");
 
+newXThreshold.selection(scatterpoints);
+newYThreshold.selection(scatterpoints);
+
 draft.layer("#svg")
-    .selection(scatterpoints)
     .x("Aroma", xScale)
     .y("Flavor", yScale)
     .augment(merge(newXThreshold, newYThreshold, mergeBy));

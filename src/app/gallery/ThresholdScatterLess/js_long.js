@@ -86,10 +86,9 @@ export const Vis = () => {
 
   const styles = {"fill": {"fill": (d, i) => colorScale(d.Aroma)}};
 
-  newYThreshold.updateStyles(styles);
+  newYThreshold.selection(scatterpoints).updateStyles(styles);
 
   draft.layer("#svg")
-        .selection(scatterpoints)
         .x("Aroma", xScale)
         .y("Flavor", yScale)
         .include({"name":["line", "fill", "stroke", "opacity", "text"]})

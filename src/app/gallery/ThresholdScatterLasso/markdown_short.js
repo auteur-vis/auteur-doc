@@ -13,7 +13,7 @@ const styles = {"fill": {"fill": (d, i) => colorScale(d.Aroma)}};
 newYThreshold.current.updateStyles(styles);
 
 draft.current.layer(ref.current)
-            .selection(scatterpoints)
+			.selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)
             .exclude({"name":["regression", "label"]})

@@ -111,14 +111,13 @@ export const Vis = () => {
 
     const styles = {"fill": {"fill": (d, i) => colorScale(d.Flavor)}};
 
-    newEmphasis.updateStyles(styles);
+    newEmphasis.selection(scatterpoints).updateStyles(styles);
 
     draft.layer("#svg")
-                .selection(scatterpoints)
-                .x("Aroma", xScale)
-                .y("Flavor", yScale)
-                .exclude({"name":["label", "regression"]})
-                .augment(newEmphasis.getAugs());
+        .x("Aroma", xScale)
+        .y("Flavor", yScale)
+        .exclude({"name":["label", "regression"]})
+        .augment(newEmphasis.getAugs());
 
     function updateEmphVal1(e) {
         emphVal1 = e.target.value;

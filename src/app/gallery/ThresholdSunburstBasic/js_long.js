@@ -84,8 +84,9 @@ export const Vis = () => {
       .attr("dy", "0.35em")
       .text(d => d.data.name);
 
+  newThreshold.selection(arcs);
+
   chart.layer("#svg")
-        .selection(arcs)
         .exclude({"name":["fill"]})
         .augment(newThreshold.getAugs());
 

@@ -72,12 +72,13 @@ export const Vis = () => {
             .attr("fill", "black")
             .text(d => d);
 
+  mainRegression.selection(scatterpoints);
+
   draft.layer("#svg")
-              .selection(scatterpoints)
-              .x("sepalLength", xScale)
-              .y("petalLength", yScale)
-              .exclude({"name":["text"]})
-              .augment(mainRegression.getAugs());
+        .x("sepalLength", xScale)
+        .y("petalLength", yScale)
+        .exclude({"name":["text"]})
+        .augment(mainRegression.getAugs());
 
   let species = Array.from(new Set(data.map(d => d.species)));
 

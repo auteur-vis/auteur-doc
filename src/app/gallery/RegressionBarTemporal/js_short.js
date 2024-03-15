@@ -5,10 +5,9 @@ const regression = new Regression();
 
 const style = {"regression":{"transform":${"`"}translate(${"$"}{xScale.bandwidth()/2}, 0)${"`"}}};
 
-regression.updateStyles(style);
+regression.selection(bars).updateStyles(style);
 
 draft.layer("#svg")
-  .selection(bars)
   .x("month", xScale)
   .y("AverageTemperature", yScale)
   .augment(regression.getAugs());

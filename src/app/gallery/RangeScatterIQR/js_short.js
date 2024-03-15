@@ -6,8 +6,9 @@ const style = {"fill":{"fill":"steelblue"},
 const draft = new Draft();
 const newRange = new Range("Flavor", ["Q1", "Q3"], "closed", style);
 
+newRange.selection(scatterpoints);
+
 draft.layer("#svg")
-    .selection(scatterpoints)
     .x("Aroma", xScale)
     .y("Flavor", yScale)
     .exclude({"name":["opacity", "regression", "label"]})

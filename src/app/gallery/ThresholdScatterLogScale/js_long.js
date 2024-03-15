@@ -85,10 +85,9 @@ export const Vis = () => {
 
   const styles = {"fill": {"fill": (d, i) => colorScale(d.Aroma)}};
 
-  newYThreshold.updateStyles(styles);
+  newYThreshold.selection(scatterpoints).updateStyles(styles);
 
   draft.layer("#svg")
-      .selection(scatterpoints)
       .x("Flavor", xScale)
       .y("Aroma", yScale)
       .exclude({"name":["label"]})

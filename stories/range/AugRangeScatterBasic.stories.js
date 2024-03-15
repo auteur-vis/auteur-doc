@@ -98,7 +98,7 @@ export const Basic = () => {
 		range.updateStyles(styles);
 
 		const draft = new Draft();
-		draft.chart("#svg")
+		draft.layer("#svg")
 			.selection(scatterpoints)
 			.x("Aroma", xScale)
 			.y("Flavor", yScale)

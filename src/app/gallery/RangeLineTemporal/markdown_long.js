@@ -99,12 +99,13 @@ export default function Vis() {
                   .attr("text-anchor", "middle")
                   .attr("transform", ${"`"}translate(0, 40)${"`"})
                   .attr("fill", "black")
-                  .text(d => d)
+                  .text(d => d);
+
+        newRange.current.selection(lines);
 
         const draft = new Draft();
 
         draft.layer(ref.current)
-            .selection(lines)
             .x("date", xScale)
             .y("AverageTemperature", yScale)
             .exclude({"name": ["text", "opacity"]})

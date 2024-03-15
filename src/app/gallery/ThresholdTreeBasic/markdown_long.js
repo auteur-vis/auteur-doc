@@ -90,8 +90,9 @@ export default function Vis() {
             .attr("y", (d, i, nodes) => ${"`"}${"$"}{(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em${"`"})
             .text(d => d);
 
+        newThreshold.current.selection(leafRects);
+
         chart.current.layer(ref.current)
-                    .selection(leafRects)
                     .exclude({"name":["fill"]})
                     .augment(newThreshold.current.getAugs());
 

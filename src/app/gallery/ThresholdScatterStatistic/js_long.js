@@ -83,8 +83,9 @@ export const Vis = () => {
             .attr("fill", "black")
             .text(d => d);
 
+  newYThreshold.selection(scatterpoints);
+
   draft.layer("#svg")
-        .selection(scatterpoints)
         .x("Aroma", xScale)
         .y("Flavor", yScale)
         .exclude({"name":["regression", "label"]})

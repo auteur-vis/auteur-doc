@@ -124,7 +124,7 @@ export const Quadrant = () => {
 				  .attr("fill", "black")
 				  .text(d => d)
 
-		chart.current.chart(ref.current)
+		chart.current.layer(ref.current)
 					.selection(scatterpoints)
 					.x("Aroma", xScale)
 					.y("Flavor", yScale)

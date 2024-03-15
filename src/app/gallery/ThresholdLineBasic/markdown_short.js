@@ -7,10 +7,9 @@ const newXThreshold = useRef(new Threshold("date", xThreshold, "eq"));
 
 const styles = {"line": {"stroke": (d, i) => "red", "stroke-width": "2px"}};
 
-newXThreshold.current.updateStyles(styles);
+newXThreshold.current.selection(lines).updateStyles(styles);
 
 draft.current.layer(ref.current)
-            .selection(lines)
             .x("date", xScale)
             .y("AverageTemperature", yScale)
             .include({"name":["line"]})

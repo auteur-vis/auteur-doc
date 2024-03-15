@@ -85,10 +85,12 @@ export default function Vis() {
                   .attr("transform", ${"`"}translate(0, 40)${"`"})
                   .attr("fill", "black")
                   .text(d => d);
+
+        newRange.current.selection(bars);
+
         let newAugs = newRange.current.getAugs();
 
         draft.current.layer(ref.current)
-                  .selection(bars)
                   .x("FIELD1", xScale)
                   .y("Flavor", yScale)
                   .exclude({"name":["label", "regression", "text"]})

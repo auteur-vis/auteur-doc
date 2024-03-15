@@ -93,10 +93,12 @@ export default function Vis() {
                   .attr("text-anchor", "middle")
                   .attr("transform", ${"`"}translate(0, 40)${"`"})
                   .attr("fill", "black")
-                  .text(d => d)
+                  .text(d => d);
+
+        newXThreshold.current.selection(scatterpoints);
+        newYThreshold.current.selection(scatterpoints);
 
         draft.current.layer(ref.current)
-                    .selection(scatterpoints)
                     .x("Aroma", xScale)
                     .y("Flavor", yScale)
                     .augment(merge(newXThreshold.current, newYThreshold.current, mergeBy));

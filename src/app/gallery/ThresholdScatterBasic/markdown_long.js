@@ -73,12 +73,13 @@ export default function Basic() {
               .attr("fill", "steelblue");
 
     const yThreshold = new Threshold("Flavor", "median", "geq");
+    yThreshold.selection(scatterpoints);
+
     const augmentations = yThreshold.getAugs();
 
     const draft = new Draft();
 
     draft.layer(ref.current)
-      .selection(scatterpoints)
       .x("Aroma", xScale)
       .y("Flavor", yScale)
       .augment(augmentations);

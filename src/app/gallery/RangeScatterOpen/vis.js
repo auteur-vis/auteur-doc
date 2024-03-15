@@ -78,10 +78,11 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 				  .attr("text-anchor", "middle")
 				  .attr("transform", `translate(0, 40)`)
 				  .attr("fill", "black")
-				  .text(d => d)
+				  .text(d => d);
+
+		newRange.current.selection(scatterpoints);
 
 		draft.current.layer(ref.current)
-					.selection(scatterpoints)
 					.x("Aroma", xScale)
 					.y("Flavor", yScale)
 					.exclude({"name":["label", "regression", "text"]});

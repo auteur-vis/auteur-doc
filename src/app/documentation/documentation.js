@@ -22,10 +22,14 @@ export default function Documentation() {
       <div className={styles.section}>
         <p>There are three main classes of objects in Auteur - Generation Criteria, Augmentations, and Drafts.
             Generation Criteria are templates that can be parameterized based on the data relationships relevant to the usage context.
-            Once a generation criterion has been parameterized, an array of Augmentations can be generated using the 
-            <code className={styles.code}>.getAugs()</code> function to convey the details of the data relationship. Finally,
-            this list of augmentations and a target D3 visualization can be input to the Draft object, which then renders
-            the augmentations onto the visualization.</p>
+            Once a generation criterion has been parameterized, a <code className={styles.code}>.selection(D3Selection)</code> or
+            <code className={styles.code}>.select(CSSSelector)</code> needs to be defined. This determines the SVG elements the
+            augmentations will be applied to.</p>
+
+        <p className={styles.sectionContent}> Finally, an array of Augmentations can be generated using the <code className={styles.code}>.getAugs()</code> function to
+            convey the details of the data relationship. This list of augmentations and a target D3 visualization can be input to the Draft object, which then renders
+            the augmentations onto the visualization. An overview of this workflow is shown below:</p>
+        <img src="/auteur-doc/algo.png" alt="overview of algorithm" style={{"width":"50%","marginTop":"20px"}}/>
       </div>
 
       <div className={styles.section}>
@@ -204,10 +208,73 @@ export default function Documentation() {
 
         <Divider className={styles.divider} />
 
+        <h2 className={styles.sectionSubHeader} id="Selections">Selections</h2>
+
+        <p className={styles.sectionContent}>Selections determine the SVG elements that augmentations will be applied to. They should be defined either for each Generation Criterion or for the entire
+        Draft object as a whole. If defined on the Generation Criterion level, multiple Generation Criteria can have different selections even when added to the same visualization. If a single
+        selection is defined for the Draft object, this selection applies to all generation criteria added to that Draft.</p>
+
+        <h2 className={styles.sectionSubHeader}>.select(selector)</h2>
+        <p className={styles.sectionContent}>A css selector that defines the svg element(s) that should be considered when applying the augmentations.
+        For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.code}>.select()</code> or
+        <code className={styles.code}>.selection()</code> needs to be defined.</p>
+        <p className={styles.sectionContent}>Usage: <br />
+        <code className={styles.code}>
+            {`.select("circle")`}
+        </code><br />
+        <code className={styles.code}>
+            {`.select(".{CLASSNAME}")`}
+        </code>
+        </p>
+        <p className={styles.sectionContent}>Parameters:</p>
+        <TableContainer component={Paper} style={{ boxShadow:"none", borderRadius:"0px" }}>
+          <Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
+            <TableBody>
+                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <TableCell component="th" scope="row">
+                    selector
+                  </TableCell>
+                  <TableCell><b><i>str, default=None</i></b><br/>A css selector of all svg elements to be included when applying augmentations.</TableCell>
+                </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Divider className={styles.divider} />
+
+        <h2 className={styles.sectionSubHeader}>.selection(selection)</h2>
+        <p className={styles.sectionContent}>A d3 selection that defines the svg element(s) that should be considered when applying the augmentations.
+        For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.code}>.select()</code> or
+        <code className={styles.code}>.selection()</code> needs to be defined.</p>
+        <p className={styles.sectionContent}>Usage: <br />
+        <code className={styles.code}>
+            {`.selection(d3.selectAll("circle"))`}
+        </code><br />
+        <code className={styles.code}>
+            {`.selection(d3.selectAll(".{CLASSNAME}"))`}
+        </code>
+        </p>
+        <p className={styles.sectionContent}>Parameters:</p>
+        <TableContainer component={Paper} style={{ boxShadow:"none", borderRadius:"0px" }}>
+          <Table sx={{ minWidth: 650 }} size="small" aria-label="simple table">
+            <TableBody>
+                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <TableCell component="th" scope="row">
+                    selection
+                  </TableCell>
+                  <TableCell><b><i>array, default=None</i></b><br/>A d3 selection of all svg elements to be included when applying augmentations.</TableCell>
+                </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <Divider className={styles.divider} />
+
         <h2 className={styles.sectionSubHeader} id="CompoundCriteria">Compound Generation Criteria</h2>
-        <p className={styles.sectionContent}>to further enhance the variety and expressiveness of the library, developers can apply multiple generation criteria to the same visualization.
+        <p className={styles.sectionContent}>To further enhance the variety and expressiveness of the library, developers can apply multiple generation criteria to the same visualization.
           Since each generation criterion returns multiple augmentations, combining generation criteria requires a way to merge multiple sets of augmentations on the same visualization.
           Each generation criterion has three methods that can be used to combine its augmentations with another generation criterion using set operations - union, intersect, and symmdiff - to express more complex data relationships.</p>
+
+        <img src="/auteur-doc/set_operations.png" alt="set operations for combining two different threshold generation criteria" style={{"width":"100%","marginTop":"20px"}}/>
 
         <h3 className={styles.sectionSubHeader}>.union(generationCriteria)</h3>
         <p className={styles.sectionContent}>Augmentations from all provided generation criteria are applied.</p>

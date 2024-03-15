@@ -5,7 +5,7 @@ import Draft from "../../../auteur/src/lib/Draft.js";
 import Emphasis from "../../../auteur/src/lib/Emphasis.js";
 
 // data from https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data
-import temperature from "../../public/chartaccent_temperature.json";
+import gapminder from "../../public/chartaccent_gapminder.json";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -16,15 +16,14 @@ export const Task2 = () => {
 
 	const ref = useRef("task2");
 
-	const cities = ["Philadelphia"];
-	const [data, setData] = React.useState(temperature);
-
 	let layout={"width":1200,
 	   		   "height":700,
 	   		   "marginTop":50,
 	   		   "marginRight":50,
 	   		   "marginBottom":50,
 	   		   "marginLeft":50};
+
+	const [data, setData] = useState(gapminder);
 
 	useEffect(() => {
 
@@ -40,25 +39,29 @@ export const Task2 = () => {
 		svgElement.attr("width", layout.width)
 				.attr("height", layout.height);
 
-		let xScale = d3.scaleBand()
-					.domain(data.map(d => d["Month"]))
+		let xScale = d3.scaleLinear()
+					.domain([0, d3.max(data, d => d["FertilityRate"])])
 					.range([layout.marginLeft, layout.width - layout.marginRight]);
 
 		let yScale = d3.scaleLinear()
-					.domain([0, d3.max(data, d => d.Philadelphia)])
+					.domain([d3.min(data, d => d["LifeExpectancy"]), 88])
 					.range([layout.height - layout.marginBottom, layout.marginTop]);
 
-		let colorScale = d3.scaleOrdinal(d3.schemePastel2)
-							.domain(cities);
+		let regions = Array.from(new Set(data.map(d => d.Region)));
 
-		let lineFunctions = {};
+		let colorScale = d3.scaleOrdinal(d3.schemeSet2)
+							.domain(regions);
+
+		let sizeScale = d3.scaleLinear()
+					.domain(d3.extent(data, d => d["Population"]))
+					.range([3, 20]);							
 
 		svgElement.select("#xAxis")
 				  .call(d3.axisBottom(xScale))
 				  .attr("transform", `translate(0, ${layout.height - layout.marginBottom})`);
 
 		svgElement.select("#xAxis").selectAll("#xTitle")
-				  .data(["Month"])
+				  .data(["Fertility Rate"])
 				  .join("text")
 				  .attr("id", "xTitle")
 				  .attr("text-anchor", "middle")
@@ -71,30 +74,30 @@ export const Task2 = () => {
 				  .attr("transform", `translate(${layout.marginLeft}, 0)`);
 
 		svgElement.select("#yAxis").selectAll("#yTitle")
-				  .data(["Temperature"])
+				  .data(["Life Expectancy"])
 				  .join("text")
 				  .attr("id", "yTitle")
 				  .attr("text-anchor", "middle")
 				  .attr("transform", `translate(0, 40)`)
 				  .attr("fill", "black")
-				  .text(d => d);
+				  .text(d => d)
 
 		let legend = svgElement.select("#legend")
 							.selectAll(".legendCircle")
-							.data(cities)
+							.data(regions)
 							.join("circle")
 							.attr("class", "legendCircle")
-							.attr("cx", (d, i) => layout.width - 100)
+							.attr("cx", (d, i) => layout.width - 150)
 							.attr("cy", (d, i) => layout.marginTop + 16 * i)
 							.attr("r", 5)
 							.attr("fill", d => colorScale(d))
 
 		let legendText = svgElement.select("#legend")
 							.selectAll(".legendText")
-							.data(cities)
+							.data(regions)
 							.join("text")
 							.attr("class", "legendText")
-							.attr("x", (d, i) => layout.width - 100 + 16)
+							.attr("x", (d, i) => layout.width - 150 + 16)
 							.attr("y", (d, i) => layout.marginTop + 16 * i + 3)
 							.attr("fill", "black")
 							.attr("text-anchor", "start")
@@ -102,42 +105,30 @@ export const Task2 = () => {
 							.attr("font-size", "10")
 							.text(d => d)
 
-		let firstHalf = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
-
-		let bars = svgElement.select("#mark")
-							.selectAll(".climateBar")
+		let scatterpoints = svgElement.select("#mark")
+							.selectAll(".scatterpoints")
 							.data(data)
-							.join("rect")
-							.attr("class", d => `climateBar ${firstHalf.indexOf(d.Month) < 0 ? "second" : "first"}`)
-							.attr("x", d => xScale(d["Month"]) + 1)
-							.attr("y", d => yScale(d["Philadelphia"]))
-							.attr("width", xScale.bandwidth() - 2)
-							.attr("height", d => yScale(0) - yScale(d["Philadelphia"]))
-							.attr('fill', '#a9cfd6');
+							.join("circle")
+							.attr("class", d => `scatterpoints`)
+							.attr("cx", d => xScale(d.FertilityRate))
+							.attr("cy", d => yScale(d.LifeExpectancy))
+							.attr("r", d => sizeScale(d.Population))
+							.attr('fill', d => colorScale(d.Region));
 
-		svgElement.select("#augs")
-			.attr("transform", `translate(${xScale.bandwidth() / 2}, 0)`);
+		let draft = new Draft();
 
-		const emph1 = new Emphasis("Month",
-			["Jan", "Feb", "Mar", "Apr", "May", "Jun"]);
-		const emph2 = new Emphasis("Month",
-			["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
+		const emph1 = new Emphasis("Region", "Sub-Saharan Africa");
+		const emph2 = new Emphasis("Country",
+			["Hong Kong, China", "Afghanistan", "Sweden", "Greece"]);
 
-		let style1 = {"regression":{"stroke":"red"}, "label":{"text":(d) => d.Philadelphia}};
-		let style2 = {"regression":{"stroke":"green"}, "label":{"text":(d) => d.Philadelphia}};
+		emph1.include({"name":["stroke", "opacity"]});
+		emph2.include({"name":["stroke", "opacity", "label"]});
 
-		emph1.updateStyles(style1);
-		emph2.updateStyles(style2);
-
-		const draft = new Draft();
-
-		draft.layer("#augs")
-			.selection(bars)
-			.x("Month", xScale)
-			.y("Philadelphia", yScale)
-			.include({"name":["regression", "label"]})
-			.augment(emph1.getAugs())
-			.augment(emph2.getAugs());
+		draft.layer(ref.current)
+			.selection(scatterpoints)
+			.x("FertilityRate", xScale)
+			.y("LifeExpectancy", yScale)
+			.augment(emph1.union(emph2));
 
 	}, [data])
 
@@ -147,7 +138,6 @@ export const Task2 = () => {
 				<g id="mark" />
 				<g id="xAxis" />
 				<g id="yAxis" />
-				<g id="augs" />
 				<g id="legend" />
 				<text id="tooltip" />
 			</svg>

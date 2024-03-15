@@ -94,7 +94,9 @@ export const Vis = () => {
             .attr("text-anchor", "middle")
             .attr("transform", ${"`"}translate(0, 40)${"`"})
             .attr("fill", "black")
-            .text(d => d)
+            .text(d => d);
+
+  newRange.selection(lines);
 
   const draft = new Draft();
 

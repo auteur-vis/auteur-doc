@@ -73,12 +73,13 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 							.attr("fill", "steelblue");
 
 		const yThreshold = new Threshold("Flavor", "median", "geq");
+		yThreshold.selection(scatterpoints);
+		
 		const augmentations = yThreshold.getAugs();
 
 		const draft = new Draft();
 
 		draft.layer("#svg")
-			.selection(scatterpoints)
 			.x("Aroma", xScale)
 			.y("Flavor", yScale);
 

@@ -111,10 +111,12 @@ export const Vis = () => {
             .attr("text-anchor", "middle")
             .attr("transform", ${"`"}translate(0, 40)${"`"})
             .attr("fill", "black")
-            .text(d => d)
+            .text(d => d);
+
+  newXThreshold.selection(scatterpoints);
+  newYThreshold.selection(scatterpoints);
 
   draft.layer("#svg")
-        .selection(scatterpoints)
         .x("Aroma", xScale)
         .y("Flavor", yScale)
         .augment(merge(newXThreshold, newYThreshold, mergeBy));

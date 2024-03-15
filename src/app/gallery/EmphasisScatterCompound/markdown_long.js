@@ -82,8 +82,10 @@ export default function Vis() {
                   .attr("fill", "black")
                   .text(d => d);
 
+        newEmphasis.current.selection(scatterpoints);
+        newCatEmphasis.current.selection(scatterpoints);
+
         draft.current.layer(ref.current)
-                    .selection(scatterpoints)
                     .x("Aroma", xScale)
                     .y("Flavor", yScale)
                     .exclude({"name":["label", "regression"]})

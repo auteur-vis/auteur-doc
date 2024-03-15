@@ -8,8 +8,10 @@ const draft = useRef(new Draft());
 const newXThreshold = useRef(new Threshold("Aroma", xThreshold, "leq"));
 const newYThreshold = useRef(new Threshold("Flavor", yThreshold, "leq"));
 
+newXThreshold.current.selection(scatterpoints);
+newYThreshold.current.selection(scatterpoints);
+
 draft.current.layer(ref.current)
-            .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)
             .augment(merge(newXThreshold.current, newYThreshold.current, mergeBy));

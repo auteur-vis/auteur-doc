@@ -8,11 +8,10 @@ let colorScale = d3.scaleSequential(d3.interpolateTurbo)
 const styles = {"fill": {
     "fill": d => colorScale(d.Aroma) }};
 
-range.updateStyles(styles);
+range.selection(scatterpoints).updateStyles(styles);
 
 const draft = new Draft();
 draft.layer(ref.current)
-    .selection(scatterpoints)
     .x("Aroma", xScale)
     .y("Flavor", yScale)
     .include({"name":["rect", "fill", "stroke"]})

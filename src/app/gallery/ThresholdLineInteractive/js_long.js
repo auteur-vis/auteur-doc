@@ -105,10 +105,9 @@ export const Vis = () => {
 
   const styles = {"stroke": {"stroke": (d, i) => colorScale(d[0].City), "stroke-width": "2px"}};
 
-  newYThreshold.updateStyles(styles);
+  newYThreshold.selection(lines).updateStyles(styles);
 
   draft.layer("#svg")
-      .selection(lines)
       .x("date", xScale)
       .y("AverageTemperature", yScale)
       .exclude({"name":["label", "regression", "text", "fill"]})

@@ -103,10 +103,9 @@ export default function Vis({size={"width":900, "height":500}, sparse=false}) {
 
 		const styles = {"line": {"stroke": (d, i) => "red", "stroke-width": "2px"}};
 
-		newXThreshold.current.updateStyles(styles);
+		newXThreshold.current.selection(lines).updateStyles(styles);
 
 		draft.current.layer(ref.current)
-					.selection(lines)
 					.x("date", xScale)
 					.y("AverageTemperature", yScale);
 

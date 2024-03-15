@@ -117,12 +117,11 @@ export default function Vis({size={"width":560, "height":500}, sparse=false}) {
 		const range = new Range("count", [25, 50]);
 
 		const styles = {"stroke": {"stroke": "red", "stroke-width": "2px"}};
-		range.updateStyles(styles);
+		range.selection(groups).updateStyles(styles);
 
 		const draft = new Draft();
 
 		draft.layer("#svg")
-			.selection(groups)
 			.x("country", xScale)
 			.y("count", yScale)
 			.include({"name":["stroke", "opacity"]})

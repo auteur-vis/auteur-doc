@@ -6,8 +6,9 @@ let emphVar = "Variety";
 const draft = new Draft();
 const newEmphasis = new Emphasis(emphVar, emphVal);
 
+newEmphasis.selection(scatterpoints);
+
 draft.layer("#svg")
-    .selection(scatterpoints)
     .x("Aroma", xScale)
     .y("Flavor", yScale)
     .exclude({"name":["label", "regression"]})

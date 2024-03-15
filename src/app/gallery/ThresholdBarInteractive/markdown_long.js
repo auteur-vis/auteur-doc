@@ -76,10 +76,11 @@ export default function Vis() {
                   .attr("text-anchor", "middle")
                   .attr("transform", ${"`"}translate(0, 40)${"`"})
                   .attr("fill", "black")
-                  .text(d => d)
+                  .text(d => d);
+
+        newBarThreshold.current.selection(bars);
 
         draft.current.layer(ref.current)
-                    .selection(bars)
                     .x("Country", xScale)
                     .y("count", yScale)
                     .exclude({"name":["label", "regression", "fill", "stroke"]})

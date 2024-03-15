@@ -76,8 +76,10 @@ export default function Vis() {
         const draft = new Draft();
         const newEmphasis = new Emphasis("Aroma", "median");
 
+        newEmphasis.selection(scatterpoints)
+                  .updateStyles(styles);
+
         draft.layer(ref.current)
-                    .selection(scatterpoints)
                     .x("Aroma", xScale)
                     .y("Flavor", yScale)
                     .exclude({"name":["label"]})

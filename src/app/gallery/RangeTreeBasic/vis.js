@@ -93,8 +93,9 @@ export default function Vis({size={"width":900, "height":900}, sparse=false}) {
 				.text(d => d);
 		}
 
+		newRange.current.selection(leafRects);
+
 		chart.current.layer(ref.current)
-					.selection(leafRects)
 					.exclude({"name":["fill"]})
 					.augment(newRange.current.getAugs());
 

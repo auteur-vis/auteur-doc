@@ -103,10 +103,9 @@ export default function Vis({size={"width":900, "height":500}, sparse=false}) {
 
 		const styles = {"stroke": {"stroke": (d, i) => colorScale(d[0].City), "stroke-width": "2px"}};
 
-		newYThreshold.current.updateStyles(styles);
+		newYThreshold.current.selection(lines).updateStyles(styles);
 
 		draft.current.layer(ref.current)
-					.selection(lines)
 					.x("date", xScale)
 					.y("AverageTemperature", yScale)
 					.exclude({"name":["label", "regression", "text", "fill"]});

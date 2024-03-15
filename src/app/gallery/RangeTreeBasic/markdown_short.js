@@ -6,8 +6,9 @@ const [minVal, setMinVal] = useState(9930);
 const [maxVal, setMaxVal] = useState(12000);
 const newRange = useRef(new Range("value", [minVal, maxVal]));
 
+newRange.current.selection(leafRects);
+
 chart.current.layer(ref.current)
-    .selection(leafRects)
     .exclude({"name":["fill"]})
     .augment(newRange.current.getAugs());
 `

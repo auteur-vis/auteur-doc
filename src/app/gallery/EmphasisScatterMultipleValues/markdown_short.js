@@ -10,10 +10,9 @@ let colorScale = d3.scaleSequential(d3.interpolateYlOrRd)
 
 const styles = {"fill": {"fill": (d, i) => colorScale(d.Flavor)}};
 
-newEmphasis.current.updateStyles(styles);
+newEmphasis.current.selection(scatterpoints).updateStyles(styles);
 
 draft.current.layer(ref.current)
-            .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)
             .exclude({"name":["label", "regression"]})

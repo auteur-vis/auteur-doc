@@ -89,8 +89,9 @@ export default function Vis() {
             .attr("fill-opacity", (d, i, nodes) => i === nodes.length - 1 ? 0.7 : null)
             .text(d => d);
 
+        newEmphasis.current.selection(leafRects);
+
         draft.current.layer(ref.current)
-                    .selection(leafRects)
                     .exclude({"name":["fill"]})
                     .augment(newEmphasis.current.getAugs());
 

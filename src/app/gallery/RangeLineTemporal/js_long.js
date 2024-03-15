@@ -96,10 +96,11 @@ export const Vis = () => {
             .attr("fill", "black")
             .text(d => d);
 
+  newRange.selection(lines);
+
   const draft = new Draft();
 
   draft.layer("#svg")
-        .selection(lines)
         .x("date", xScale)
         .y("AverageTemperature", yScale)
         .exclude({"name": ["text", "opacity"]})

@@ -93,14 +93,15 @@ export const Vis = () => {
                 .attr("text-anchor", "middle")
                 .attr("transform", ${"`"}translate(0, 40)${"`"})
                 .attr("fill", "black")
-                .text(d => d)
+                .text(d => d);
+
+      newEmphasis.selection(scatterpoints);
 
       draft.layer("#svg")
-                  .selection(scatterpoints)
-                  .x("Aroma", xScale)
-                  .y("Flavor", yScale)
-                  .exclude({"name":["label", "regression"]})
-                  .augment(newEmphasis.getAugs());
+          .x("Aroma", xScale)
+          .y("Flavor", yScale)
+          .exclude({"name":["label", "regression"]})
+          .augment(newEmphasis.getAugs());
 
   function updateEmphVar(e) {
       emphVar = e.target.value;

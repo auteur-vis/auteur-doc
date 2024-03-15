@@ -82,10 +82,11 @@ export default function Vis({size={"width":1000, "height":1000}, sparse=false}) 
 				  })
 				  .attr("dy", "0.35em")
 				  .text(d => d.data.name);
-		}	
+		}
+
+		newEmphasis.current.selection(arcs);
 
 		chart.current.layer(ref.current)
-					.selection(arcs)
 					.exclude({"name":["fill"]})
 					.augment(newEmphasis.current.getAugs());
 

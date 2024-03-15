@@ -78,8 +78,9 @@ export default function Vis() {
                   .attr("fill", "black")
                   .text(d => d);
 
+        newBarThreshold.current.selection(bars);
+
         draft.current.layer(ref.current)
-                    .selection(bars)
                     .x("Country", xScale)
                     .y("count", yScale)
                     .exclude({"name":["label", "regression", "fill", "stroke"]})

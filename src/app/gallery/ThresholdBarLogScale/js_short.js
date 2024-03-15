@@ -6,8 +6,9 @@ let barOperation = "leq";
 const draft = new Draft();
 const newBarThreshold = new Threshold("count", barThreshold, barOperation);
 
+newBarThreshold.selection(bars);
+
 draft.layer("#svg")
-	.selection(bars)
 	.x("Country", xScale)
 	.y("count", yScale)
 	.exclude({"name":["label", "regression", "fill", "stroke"]})

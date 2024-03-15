@@ -83,10 +83,9 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 
 		const styles = {"fill": {"fill": (d, i) => colorScale(d.Flavor)}};
 
-		newYThreshold.current.updateStyles(styles);
+		newYThreshold.current.selection(scatterpoints).updateStyles(styles);
 
 		draft.current.layer(ref.current)
-					.selection(scatterpoints)
 					.x("Flavor", xScale)
 					.y("Aroma", yScale)
 					.exclude({"name":["label", "regression"]});

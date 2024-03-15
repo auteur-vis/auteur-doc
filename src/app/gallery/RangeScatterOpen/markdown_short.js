@@ -8,8 +8,9 @@ const style = {"rect":{"fill":"#edcf7b", "opacity": 0.2}};
 const draft = useRef(new Draft());
 const newRange = useRef(new Range("Aroma", [minThreshold, maxThreshold], "open", style));
 
+newRange.current.selection(scatterpoints);
+
 draft.current.layer(ref.current)
-            .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)
             .augment(newRange.current.getAugs());

@@ -5,8 +5,9 @@ let yThreshold = "mean";
 const draft = new Draft();
 const newYThreshold = new Threshold("Flavor", yThreshold, "leq");
 
+newYThreshold.selection(scatterpoints);
+
 draft.layer("#svg")
-    .selection(scatterpoints)
     .x("Aroma", xScale)
     .y("Flavor", yScale)
     .exclude({"name":["regression", "label"]})

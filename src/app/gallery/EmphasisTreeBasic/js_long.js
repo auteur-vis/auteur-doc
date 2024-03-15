@@ -84,8 +84,9 @@ export const Vis = () => {
       .attr("fill-opacity", (d, i, nodes) => i === nodes.length - 1 ? 0.7 : null)
       .text(d => d);
 
+    newEmphasis.selection(leafRects);
+
     draft.layer('#svg')
-          .selection(leafRects)
           .exclude({"name":["fill"]})
           .augment(newEmphasis.getAugs());
 

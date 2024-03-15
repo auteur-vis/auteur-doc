@@ -3,8 +3,9 @@ export const markdown_short = `import { Draft, Regression } from "auteur";
 const draft = useRef(new Draft());
 const mainRegression = useRef(new Regression());
 
+mainRegression.current.selection(scatterpoints);
+
 draft.current.layer(ref.current)
-            .selection(scatterpoints)
             .x("sepalLength", xScale)
             .y("petalLength", yScale)
             .exclude({"name":["text"]})

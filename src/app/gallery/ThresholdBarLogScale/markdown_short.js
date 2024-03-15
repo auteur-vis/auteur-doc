@@ -6,8 +6,9 @@ const [barOperation, setBarOperation] = useState("leq");
 const draft = useRef(new Draft());
 const newBarThreshold = useRef(new Threshold("count", barThreshold, barOperation));
 
+newBarThreshold.current.selection(bars);
+
 draft.current.layer(ref.current)
-            .selection(bars)
             .x("Country", xScale)
             .y("count", yScale)
             .exclude({"name":["label", "regression", "fill", "stroke"]})

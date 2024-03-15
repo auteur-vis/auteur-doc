@@ -85,10 +85,10 @@ export default function Vis() {
         newDerivedValues.updateStyles(newStyle);
 
         draft.layer(ref.current)
-                    .selection(scatterpoints)
-                    .x("Aroma", xScale)
-                    .y("Flavor", yScale)
-                    .augment(newDerivedValues.getAugs());
+              .selection(scatterpoints)
+              .x("Aroma", xScale)
+              .y("Flavor", yScale)
+              .augment(newDerivedValues.getAugs());
 
     }, [data])
 

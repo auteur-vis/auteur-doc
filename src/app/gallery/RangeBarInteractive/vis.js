@@ -86,8 +86,9 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 					.attr("fill", "black")
 					.text(d => d);
 
+		newRange.current.selection(bars);
+
 		draft.current.layer(ref.current)
-					.selection(bars)
 					.x("FIELD1", xScale)
 					.y("Flavor", yScale)
 					.exclude({"name":["label", "regression", "text"]});

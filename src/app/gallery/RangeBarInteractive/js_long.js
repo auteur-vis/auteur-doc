@@ -95,12 +95,13 @@ export const Vis = () => {
               .attr("fill", "black")
               .text(d => d);
 
+  newRange.selection(bars);
+
   let newAugs = newRange.getAugs();
 
   const draft = new Draft();
 
   draft.layer("#svg")
-      .selection(bars)
       .x("FIELD1", xScale)
       .y("Flavor", yScale)
       .exclude({"name":["label", "regression", "text"]})

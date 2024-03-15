@@ -13,7 +13,7 @@ export default function Home() {
 
   const optionsMap = {
     "Getting Started":["Installation", "Tutorial"],
-    "Documentation":["Generation Criteria", "*Compound Criteria", "*Customization", "*Stats", "Augmentations", "Draft"],
+    "Documentation":["Generation Criteria", "*Selections", "*Compound Criteria", "*Customization", "*Stats", "Augmentations", "Draft"],
     "Gallery":["Emphasis", "Threshold", "Range", "Derived Values", "Local Data", "Regression"]};
 
   const [selection, setSelection] = React.useState("Documentation");

@@ -5,8 +5,9 @@ const chart = new Draft();
 let threshold = 9930;
 const newThreshold = new Threshold("value", threshold, "geq");
 
+newThreshold.selection(leafRects);
+
 chart.layer("#svg")
-      .selection(leafRects)
       .exclude({"name":["fill"]})
       .augment(newThreshold.getAugs());
 `

@@ -6,10 +6,11 @@ const [maxThreshold, setMaxThreshold] = React.useState(8.5);
 const [minThreshold, setMinThreshold] = React.useState(8);
 const newRange = useRef(new Range("Flavor", [minThreshold, maxThreshold], "closed", style));
 
+newRange.current.selection(bars);
+
 let newAugs = newRange.current.getAugs();
 
 draft.current.layer(ref.current)
-            .selection(bars)
             .x("FIELD1", xScale)
             .y("Flavor", yScale)
             .exclude({"name":["label", "regression", "text"]})

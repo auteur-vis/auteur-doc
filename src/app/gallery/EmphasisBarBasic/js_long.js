@@ -77,8 +77,9 @@ export const Vis = () => {
     const draft = new Draft();
     const newEmphasis = new Emphasis("Flavor", "min");
 
+    newEmphasis.selection(bars);
+
     draft.layer("#svg")
-          .selection(bars)
           .x("FIELD1", xScale)
           .y("Flavor", yScale)
           .exclude({"name":["label"]})

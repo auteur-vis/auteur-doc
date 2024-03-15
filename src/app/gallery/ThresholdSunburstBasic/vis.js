@@ -86,8 +86,9 @@ export default function Vis({size={"width":1000, "height":1000}, sparse=false}) 
 
 		}
 
+		newThreshold.current.selection(arcs);
+
 		chart.current.layer(ref.current)
-					.selection(arcs)
 					.exclude({"name":["fill"]})
 					.augment(newThreshold.current.getAugs());
 

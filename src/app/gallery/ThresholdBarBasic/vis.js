@@ -76,13 +76,14 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 		const draft = new Draft();
 		const newThreshold = new Threshold("Flavor", 8, "leq", style);
 
+		newThreshold.selection(bars);
+
 		let newAugs = newThreshold.getAugs();
 
 		draft.layer(ref.current)
-					.selection(bars)
-					.x("FIELD1", xScale)
-					.y("Flavor", yScale)
-					.exclude({"name":["regression"]});
+			.x("FIELD1", xScale)
+			.y("Flavor", yScale)
+			.exclude({"name":["regression"]});
 
 		if (sparse) {
 			draft.exclude({"name":["label", "regression"]}).augment(newAugs);

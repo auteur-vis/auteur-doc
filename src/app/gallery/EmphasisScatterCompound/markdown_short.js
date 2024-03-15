@@ -11,8 +11,10 @@ const [emphCatVar, setEmphCatVar] = React.useState("Variety");
 const newEmphasis = useRef(new Emphasis(emphVar, emphVal));
 const newCatEmphasis = useRef(new Emphasis(emphCatVar, emphCatVal));
 
+newEmphasis.current.selection(scatterpoints);
+newCatEmphasis.current.selection(scatterpoints);
+
 draft.current.layer(ref.current)
-            .selection(scatterpoints)
             .x("Aroma", xScale)
             .y("Flavor", yScale)
             .exclude({"name":["label", "regression"]})

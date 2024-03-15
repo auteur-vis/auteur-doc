@@ -3,8 +3,9 @@ export const js_short = `import { Draft, Regression } from "auteur";
 const draft = new Draft();
 const mainRegression = new Regression();
 
+mainRegression.selection(scatterpoints);
+
 draft.layer("#svg")
-      .selection(scatterpoints)
       .x("sepalLength", xScale)
       .y("petalLength", yScale)
       .exclude({"name":["text"]})

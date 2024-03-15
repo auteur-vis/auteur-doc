@@ -7,10 +7,9 @@ const newXThreshold = new Threshold("date", xThreshold, "eq");
 
 const styles = {"line": {"stroke": (d, i) => "red", "stroke-width": "2px"}};
 
-newXThreshold.updateStyles(styles);
+newXThreshold.selection(lines).updateStyles(styles);
 
 draft.layer("#svg")
-    .selection(lines)
     .x("date", xScale)
     .y("AverageTemperature", yScale)
     .include({"name":["line"]})

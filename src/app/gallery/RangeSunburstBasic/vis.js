@@ -85,8 +85,9 @@ export default function Vis({size={"width":1000, "height":1000}, sparse=false}) 
 				  .text(d => d.data.name);
 		}
 
+		newRange.current.selection(arcs);
+
 		chart.current.layer(ref.current)
-					.selection(arcs)
 					.exclude({"name":["fill"]})
 					.augment(newRange.current.getAugs());
 

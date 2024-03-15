@@ -106,25 +106,24 @@ export const Task7 = () => {
 							.attr("x", d => xScale(d.Month) + padding)
 							.attr("y", d => yScale(d["NewYork"]))
 							.attr("width", bandwidth)
-							.attr("height", d => yScale(0) - yScale(d["NewYork"]))
-							.attr("opacity", 0.25)
+							.attr("height", d => yScale(0) - yScale(d["NewYork"]));
 
 		let CharlotteBars = svgElement.select("#mark")
 							.selectAll(".temperatureCharlotte")
 							.data(data)
 							.join("rect")
-							.attr("class", "temperatureCharlotte mytemp")
+							.attr("class", "temperatureCharlotte selected")
 							.attr('fill', d => colorScale("Charlotte"))
 							.attr("x", d => xScale(d.Month) + bandwidth + padding)
 							.attr("y", d => yScale(d["Charlotte"]))
 							.attr("width", bandwidth)
-							.attr("height", d => yScale(0) - yScale(d["Charlotte"]))
+							.attr("height", d => yScale(0) - yScale(d["Charlotte"]));
 
 		let SeattleBars = svgElement.select("#mark")
 							.selectAll(".temperatureSeattle")
 							.data(data)
 							.join("rect")
-							.attr("class", "temperatureSeattle mytemp")
+							.attr("class", "temperatureSeattle selected")
 							.attr('fill', d => colorScale("Seattle"))
 							.attr("x", d => xScale(d.Month) + bandwidth * 2 + padding)
 							.attr("y", d => yScale(d["Seattle"]))
@@ -133,13 +132,17 @@ export const Task7 = () => {
 
 		let draft = new Draft();
 
+		let newEmphasis = new Emphasis("Month", "None");
 		let newThreshold = new Threshold("NewYork", "mean", "geq");
 
+		newEmphasis.select("rect");
+		newThreshold.select(".selected");
+
 		draft.layer(ref.current)
-			.selection(svgElement.selectAll(".mytemp"))
 			.x("Month", xScale)
 			.y("NewYork", yScale)
 			.include({"name":["opacity", "stroke", "line", "text"]})
+			.augment(newEmphasis.getAugs())
 			.augment(newThreshold.getAugs());
 
 	}, [data])

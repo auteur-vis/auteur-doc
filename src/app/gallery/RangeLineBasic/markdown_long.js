@@ -101,10 +101,11 @@ export default function Vis() {
                   .attr("fill", "black")
                   .text(d => d);
 
+        newRange.current.selection(lines);
+
         const draft = new Draft();
 
         draft.layer(ref.current)
-            .selection(lines)
             .x("date", xScale)
             .y("AverageTemperature", yScale)
             .exclude({"name": ["fill", "label"]})
