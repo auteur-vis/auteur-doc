@@ -214,7 +214,7 @@ export default function Documentation() {
         Draft object as a whole. If defined on the Generation Criterion level, multiple Generation Criteria can have different selections even when added to the same visualization. If a single
         selection is defined for the Draft object, this selection applies to all generation criteria added to that Draft.</p>
 
-        <h2 className={styles.sectionSubHeader}>.select(selector)</h2>
+        <h3 className={styles.sectionSubHeader}>.select(selector)</h3>
         <p className={styles.sectionContent}>A css selector that defines the svg element(s) that should be considered when applying the augmentations.
         For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.code}>.select()</code> or
         <code className={styles.code}>.selection()</code> needs to be defined.</p>
@@ -240,7 +240,7 @@ export default function Documentation() {
           </Table>
         </TableContainer>
 
-        <h2 className={styles.sectionSubHeader}>.selection(selection)</h2>
+        <h3 className={styles.sectionSubHeader}>.selection(selection)</h3>
         <p className={styles.sectionContent}>A d3 selection that defines the svg element(s) that should be considered when applying the augmentations.
         For example, encoding-type augmentations will only be applied to data items within the selection. Either <code className={styles.code}>.select()</code> or
         <code className={styles.code}>.selection()</code> needs to be defined.</p>
