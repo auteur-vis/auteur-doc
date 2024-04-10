@@ -26,6 +26,7 @@ export default function Documentation() {
             using the Threshold generation criterion as <code className={styles.code}>Threshold("x", 15, "leq")</code>. This Threshold
             is mapped to multiple augmentations that can be used to express the specified relationship: a threshold line at x = 15,
             changing the fill, opacity, and stroke encodings of points less than or equal 15, and so on.</p>
+        <img src="/auteur-doc/schemata2.png" alt="overview of the Auteur usage workflow" style={{"width":"50%","marginTop":"20px"}}/>
             
         <p className={styles.sectionContent}To use a generation criterion, it needs to be parameterized. That is to say, we need to specify the details of the relationship.
             In the above example, we use the parameters "x", 15, and "leq" (less than equals). Once a generation criterion has been
