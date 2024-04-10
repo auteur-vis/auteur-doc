@@ -19,7 +19,7 @@ for (let s of species) {
     const speciesStyle = {"regression": {"stroke": colorScale(s), "stroke-width": "2px"}};
 
     let speciesRegression = new Regression();
-	speciesRegression.updateStyles(speciesStyle).selection(speciesSelection);
+    speciesRegression.updateStyles(speciesStyle).selection(speciesSelection);
 
     draft.current.augment(speciesRegression.getAugs());
 }
