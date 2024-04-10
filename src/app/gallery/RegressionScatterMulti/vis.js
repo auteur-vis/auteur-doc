@@ -101,8 +101,8 @@ export default function Vis({size={"width":500, "height":500}, sparse=false}) {
 			let speciesSelection = svgElement.selectAll(`.${s}`);
 			const speciesStyle = {"line": {"stroke": colorScale(s), "stroke-width": "2px"}};
 
-			let speciesRegression = new Regression(speciesStyle);
-			speciesRegression.selection(speciesSelection);
+			let speciesRegression = new Regression();
+			speciesRegression.updateStyles(speciesStyle).selection(speciesSelection);
 
 			draft.current.augment(speciesRegression.getAugs());
 
