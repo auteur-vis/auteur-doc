@@ -28,7 +28,7 @@ export default function Documentation() {
             changing the fill, opacity, and stroke encodings of points less than or equal 15, and so on.</p>
         <img src="/auteur-doc/schemata2.png" alt="overview of the Auteur usage workflow" style={{"width":"50%","marginTop":"20px"}}/>
             
-        <p className={styles.sectionContent}To use a generation criterion, it needs to be parameterized. That is to say, we need to specify the details of the relationship.
+        <p className={styles.sectionContent}>To use a generation criterion, it needs to be parameterized. That is to say, we need to specify the details of the relationship.
             In the above example, we use the parameters "x", 15, and "leq" (less than equals). Once a generation criterion has been
             parameterized, a <code className={styles.code}>.selection(D3Selection)</code> or <code className={styles.code}>.select(CSSSelector)</code>
             needs to be defined. This determines the SVG elements the augmentations will be applied to.</p>
