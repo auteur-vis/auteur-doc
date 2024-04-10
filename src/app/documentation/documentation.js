@@ -22,11 +22,17 @@ export default function Documentation() {
       <div className={styles.section}>
         <p>There are three main classes of objects in Auteur - Generation Criteria, Augmentations, and Drafts.
             Generation Criteria are templates that can be parameterized based on the data relationships relevant to the usage context.
-            Once a generation criterion has been parameterized, a <code className={styles.code}>.selection(D3Selection)</code> or
-            <code className={styles.code}>.select(CSSSelector)</code> needs to be defined. This determines the SVG elements the
-            augmentations will be applied to.</p>
+            Each generation criterion is mapped to multiple Augmentations. For example, the data relationship x&#60;15 can be expressed
+            using the Threshold generation criterion as <code className={styles.code}>Threshold("x", 15, "leq")</code>. This Threshold
+            is mapped to multiple augmentations that can be used to express the specified relationship: a threshold line at x = 15,
+            changing the fill, opacity, and stroke encodings of points less than or equal 15, and so on.</p>
+            
+        <p>To use a generation criterion, it needs to be parameterized. That is to say, we need to specify the details of the relationship.
+            In the above example, we use the parameters "x", 15, and "leq" (less than equals). Once a generation criterion has been
+            parameterized, a <code className={styles.code}>.selection(D3Selection)</code> or <code className={styles.code}>.select(CSSSelector)</code>
+            needs to be defined. This determines the SVG elements the augmentations will be applied to.</p>
 
-        <p className={styles.sectionContent}> Finally, an array of Augmentations can be generated using the <code className={styles.code}>.getAugs()</code> function to
+        <p className={styles.sectionContent}>Finally, an array of Augmentations can be generated using the <code className={styles.code}>.getAugs()</code> function to
             convey the details of the data relationship. This list of augmentations and a target D3 visualization can be input to the Draft object, which then renders
             the augmentations onto the visualization. An overview of this workflow is shown below:</p>
         <img src="/auteur-doc/algo.png" alt="overview of algorithm" style={{"width":"50%","marginTop":"20px"}}/>
