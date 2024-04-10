@@ -24,7 +24,7 @@ export default function Documentation() {
             Generation Criteria are templates that can be parameterized based on the data relationships relevant to the usage context.
             Each generation criterion is mapped to multiple Augmentations. For example, the data relationship x&#60;15 can be expressed
             using the Threshold generation criterion as <code className={styles.code}>Threshold("x", 15, "leq")</code>. This Threshold
-            is mapped to multiple augmentations that can be used to express the specified relationship: a threshold line at x = 15,
+            is mapped to multiple augmentations that can be used to express the specified relationship: a threshold line at x&#61;15,
             changing the fill, opacity, and stroke encodings of points less than or equal 15, and so on.</p>
         <img src="/auteur-doc/schemata2.png" alt="overview of the Auteur usage workflow" style={{"width":"50%","marginTop":"20px"}}/>
             
